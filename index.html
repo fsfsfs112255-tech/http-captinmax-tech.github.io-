@@ -40,51 +40,67 @@
   /* Top bar */
   .topbar{
     position:sticky;top:0;z-index:50;
-    background:rgba(10,13,18,0.82);backdrop-filter:blur(10px);
+    background:rgba(10,13,18,0.85);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  .topbar-inner{max-width:520px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;}
+  .topbar-inner{max-width:520px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:10px;}
   .brand-mark{
-    width:34px;height:34px;border-radius:9px;
+    width:32px;height:32px;border-radius:9px;
     background:linear-gradient(135deg,var(--blue),var(--violet));
     display:flex;align-items:center;justify-content:center;
-    font-family:'Tajawal';font-weight:900;font-size:15px;color:#0A0D12;
+    font-family:'Tajawal';font-weight:900;font-size:14px;color:#0A0D12;
     box-shadow:0 0 18px rgba(62,139,255,0.35);
   }
-  .brand-name{font-family:'Tajawal';font-weight:800;font-size:15px;line-height:1.15;}
-  .brand-sub{font-size:11px;color:var(--text-dim);}
+  .brand-name{font-family:'Tajawal';font-weight:800;font-size:14px;line-height:1.15;}
+  .brand-sub{font-size:10.5px;color:var(--text-dim);}
   .tg-btn{
     display:flex;align-items:center;gap:6px;
     background:var(--bg-card);border:1px solid var(--border);
-    padding:8px 12px;border-radius:20px;
-    color:var(--text);text-decoration:none;font-size:12.5px;font-weight:600;
+    padding:7px 11px;border-radius:20px;
+    color:var(--text);text-decoration:none;font-size:12px;font-weight:600;
     transition:border-color .15s;
   }
   .tg-btn:hover{border-color:#2AA9EA;}
-  .tg-dot{width:8px;height:8px;border-radius:50%;background:#2AA9EA;box-shadow:0 0 8px #2AA9EA;}
+  .tg-dot{width:7px;height:7px;border-radius:50%;background:#2AA9EA;box-shadow:0 0 8px #2AA9EA;}
 
-  section{padding:26px 0;}
+  /* Page Navigation Bar (Tabs) */
+  .nav-pages{
+    display:flex;gap:6px;padding:10px 16px;background:rgba(18,22,29,0.9);
+    border-bottom:1px solid var(--border);overflow-x:auto;max-width:520px;margin:0 auto;
+    position:sticky;top:57px;z-index:40;backdrop-filter:blur(10px);
+  }
+  .page-tab{
+    background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);
+    font-size:12px;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;white-space:nowrap;
+    font-family:'Tajawal', sans-serif;transition:.15s;display:flex;align-items:center;gap:5px;flex-shrink:0;
+  }
+  .page-tab.active{background:rgba(62,139,255,0.15);border-color:var(--blue);color:#7FB0FF;}
+
+  .page-section{display:none;}
+  .page-section.active{display:block;}
+
+  section{padding:20px 0;}
   h2.section-title{font-family:'Tajawal';font-weight:800;font-size:18px;margin-bottom:4px;}
   p.section-desc{color:var(--text-dim);font-size:13px;margin-bottom:16px;line-height:1.7;}
 
   /* Hero / readiness */
-  .hero{padding-top:28px;text-align:center;}
+  .hero{padding-top:10px;text-align:center;}
   .hero-eyebrow{font-family:'Tajawal';font-weight:800;font-size:22px;letter-spacing:.3px;}
   .hero-note{color:var(--text-dim);font-size:12.5px;margin-top:6px;max-width:320px;margin-inline:auto;}
 
-  .gauge-wrap{position:relative;width:220px;height:220px;margin:26px auto 6px;}
+  .gauge-wrap{position:relative;width:200px;height:200px;margin:20px auto 6px;}
   .gauge-wrap svg{width:100%;height:100%;transform:rotate(-90deg);}
   .gauge-track{fill:none;stroke:var(--border);stroke-width:12;}
   .gauge-fill{fill:none;stroke:var(--lime);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1), stroke .4s;}
   .gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .gauge-score{font-family:'Tajawal';font-weight:900;font-size:44px;line-height:1;}
-  .gauge-pct{font-size:13px;color:var(--text-dim);margin-top:6px;}
-  .gauge-label{font-size:12px;font-weight:700;margin-top:8px;padding:4px 12px;border-radius:20px;background:rgba(182,255,62,0.1);color:var(--lime);}
+  .gauge-score{font-family:'Tajawal';font-weight:900;font-size:40px;line-height:1;}
+  .gauge-pct{font-size:12px;color:var(--text-dim);margin-top:4px;}
+  .gauge-label{font-size:11.5px;font-weight:700;margin-top:6px;padding:4px 10px;border-radius:20px;background:rgba(182,255,62,0.1);color:var(--lime);}
 
   .btn{
-    font-family:'Tajawal';font-weight:800;font-size:14.5px;
-    border:none;border-radius:14px;padding:15px 20px;
+    font-family:'Tajawal';font-weight:800;font-size:14px;
+    border:none;border-radius:14px;padding:14px 20px;
     cursor:pointer;width:100%;transition:transform .12s, box-shadow .2s;
   }
   .btn:active{transform:scale(.98);}
@@ -103,14 +119,14 @@
   .btn-row{display:flex;gap:10px;margin-top:14px;}
 
   /* Stat cards */
-  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
   .stat-card{
     background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
     padding:14px;opacity:0;transform:translateY(6px);transition:opacity .35s, transform .35s;
   }
   .stat-card.show{opacity:1;transform:none;}
   .stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-  .stat-name{font-size:12.5px;color:var(--text-dim);font-weight:600;}
+  .stat-name{font-size:12px;color:var(--text-dim);font-weight:600;}
   .stat-icon{font-size:15px;}
   .stat-value{font-family:'Tajawal';font-weight:800;font-size:16px;}
   .stat-status{font-size:11px;font-weight:700;margin-top:6px;display:inline-block;padding:3px 9px;border-radius:20px;}
@@ -122,17 +138,17 @@
   /* warnings */
   .warn-card{
     display:flex;gap:12px;background:linear-gradient(90deg, rgba(255,84,112,.08), transparent);
-    border:1px solid rgba(255,84,112,.25);border-radius:12px;padding:13px 14px;margin-top:10px;
+    border:1px solid rgba(255,84,112,.25);border-radius:12px;padding:12px 14px;margin-top:10px;
   }
   .warn-icon{font-size:18px;}
-  .warn-title{font-weight:700;font-size:13.5px;color:#FF8FA3;margin-bottom:2px;}
-  .warn-text{font-size:12.5px;color:var(--text-dim);line-height:1.6;}
+  .warn-title{font-weight:700;font-size:13px;color:#FF8FA3;margin-bottom:2px;}
+  .warn-text{font-size:12px;color:var(--text-dim);line-height:1.6;}
 
-  /* toggle rows */
-  .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px;}
+  /* toggle rows & panels */
+  .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px;}
   .toggle-row{display:flex;align-items:center;justify-content:space-between;}
-  .toggle-copy .t-name{font-family:'Tajawal';font-weight:800;font-size:15px;}
-  .toggle-copy .t-desc{font-size:12px;color:var(--text-dim);margin-top:3px;max-width:290px;line-height:1.6;}
+  .toggle-copy .t-name{font-family:'Tajawal';font-weight:800;font-size:14.5px;}
+  .toggle-copy .t-desc{font-size:12px;color:var(--text-dim);margin-top:3px;max-width:280px;line-height:1.6;}
   .switch{position:relative;width:50px;height:29px;flex-shrink:0;}
   .switch input{display:none;}
   .slider{position:absolute;inset:0;background:var(--border);border-radius:20px;cursor:pointer;transition:background .2s;}
@@ -148,7 +164,7 @@
   .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
   .chip{
     background:var(--bg-elev);border:1px solid var(--border);color:var(--text-dim);
-    font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:20px;cursor:pointer;transition:.15s;
+    font-size:12px;font-weight:600;padding:8px 12px;border-radius:20px;cursor:pointer;transition:.15s;
   }
   .chip.active{background:rgba(62,139,255,.14);border-color:var(--blue);color:#7FB0FF;}
 
@@ -156,23 +172,40 @@
   .bar-track{height:9px;background:var(--bg-elev);border-radius:20px;overflow:hidden;margin-top:10px;}
   .bar-fill{height:100%;border-radius:20px;transition:width .8s cubic-bezier(.2,.8,.2,1);}
   .bar-legend{display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);margin-top:8px;}
-  .indicator{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;margin-top:10px;}
+  .indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;margin-top:10px;}
 
   /* profiles */
-  .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+  .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
   .profile-card{
     background:var(--bg-elev);border:1.5px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:.15s;
   }
   .profile-card.active{border-color:var(--lime);background:rgba(182,255,62,.06);}
-  .profile-name{font-family:'Tajawal';font-weight:800;font-size:14px;}
+  .profile-name{font-family:'Tajawal';font-weight:800;font-size:13.5px;}
   .profile-desc{font-size:11.5px;color:var(--text-dim);margin-top:4px;line-height:1.5;}
 
+  /* PRO TACTICS SECTION STYLES */
+  .tactics-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px;}
+  .tactic-tab{
+    background:var(--bg-elev);border:1px solid var(--border);color:var(--text-dim);
+    font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:.15s;
+    font-family:'Tajawal', sans-serif;
+  }
+  .tactic-tab.active{background:rgba(182,255,62,.15);border-color:var(--lime);color:var(--lime);}
+  .tactic-content{display:none;}
+  .tactic-content.active{display:block;}
+  .tactic-card-item{
+    background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;
+    padding:14px;margin-bottom:10px;
+  }
+  .tactic-card-item h3{font-family:'Tajawal';font-weight:800;font-size:14px;color:var(--lime);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+  .tactic-card-item p{font-size:12.5px;color:var(--text-dim);line-height:1.7;}
+
   /* network test */
-  .net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;}
-  .net-cell{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;}
-  .net-cell .v{font-family:'Tajawal';font-weight:800;font-size:16px;}
-  .net-cell .l{font-size:10.5px;color:var(--text-dim);margin-top:3px;}
-  .net-verdict{margin-top:14px;text-align:center;font-weight:700;font-size:13.5px;padding:10px;border-radius:10px;}
+  .net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
+  .net-cell{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;}
+  .net-cell .v{font-family:'Tajawal';font-weight:800;font-size:15px;}
+  .net-cell .l{font-size:10px;color:var(--text-dim);margin-top:3px;}
+  .net-verdict{margin-top:14px;text-align:center;font-weight:700;font-size:13px;padding:10px;border-radius:10px;}
 
   /* toast */
   .toast{
@@ -187,21 +220,21 @@
   /* telegram footer */
   .tg-banner{
     background:linear-gradient(135deg, rgba(42,169,234,.14), rgba(155,107,255,.08));
-    border:1px solid rgba(42,169,234,.3);border-radius:16px;padding:20px;
-    display:flex;align-items:center;gap:14px;
+    border:1px solid rgba(42,169,234,.3);border-radius:16px;padding:18px;
+    display:flex;align-items:center;gap:14px;margin-top:10px;
   }
   .tg-banner-icon{
-    width:44px;height:44px;border-radius:12px;background:#2AA9EA;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;font-size:20px;
+    width:40px;height:40px;border-radius:12px;background:#2AA9EA;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
   }
-  .tg-banner-title{font-family:'Tajawal';font-weight:800;font-size:14.5px;}
-  .tg-banner-sub{font-size:12px;color:var(--text-dim);margin-top:2px;}
+  .tg-banner-title{font-family:'Tajawal';font-weight:800;font-size:14px;}
+  .tg-banner-sub{font-size:11.5px;color:var(--text-dim);margin-top:2px;}
   .tg-banner-btn{
     margin-inline-start:auto;background:#2AA9EA;color:#fff;text-decoration:none;
-    font-weight:700;font-size:12.5px;padding:9px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0;
+    font-weight:700;font-size:12px;padding:8px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;
   }
 
-  footer{text-align:center;color:var(--text-faint);font-size:11.5px;padding:26px 0 6px;}
+  footer{text-align:center;color:var(--text-faint);font-size:11px;padding:24px 0 6px;}
 
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
@@ -215,8 +248,8 @@
     <div class="brand">
       <div class="brand-mark">GP</div>
       <div>
-        <div class="brand-name">Gaming Performance Center</div>
-        <div class="brand-sub">مخصص لـ eFootball Mobile</div>
+        <div class="brand-name">Gaming Center</div>
+        <div class="brand-sub">eFootball Mobile</div>
       </div>
     </div>
     <a class="tg-btn" href="https://t.me/r2max" target="_blank" rel="noopener">
@@ -225,144 +258,201 @@
   </div>
 </div>
 
+<!-- TOP SUB-PAGES NAVIGATION BAR -->
+<div class="nav-pages">
+  <div class="page-tab active" onclick="switchPage('page-scan', event)">⚡ الرئيسية والفحص</div>
+  <div class="page-tab" onclick="switchPage('page-tactics', event)">🎯 دليل المحترفين</div>
+  <div class="page-tab" onclick="switchPage('page-system', event)">⚙️ الأداء والنظام</div>
+  <div class="page-tab" onclick="switchPage('page-net', event)">📶 الشبكة والتخزين</div>
+</div>
+
 <div class="wrap">
 
-  <!-- HERO / SCAN -->
-  <section class="hero">
-    <div class="hero-eyebrow display">GAME READY?</div>
-    <p class="hero-note">اضغط Start Scan ليفحص التطبيق جاهزية جهازك قبل الدخول إلى eFootball. المسح يعرض بيانات تجريبية لتوضيح شكل الميزة.</p>
+  <!-- ================= PAGE 1: SCAN & HERO ================= -->
+  <div id="page-scan" class="page-section active">
+    <section class="hero">
+      <div class="hero-eyebrow display">GAME READY?</div>
+      <p class="hero-note">اضغط Start Scan ليفحص التطبيق جاهزية جهازك قبل الدخول إلى eFootball.</p>
 
-    <div class="gauge-wrap">
-      <svg viewBox="0 0 220 220">
-        <circle class="gauge-track" cx="110" cy="110" r="94"></circle>
-        <circle id="gaugeFill" class="gauge-fill" cx="110" cy="110" r="94"
-          stroke-dasharray="590.6" stroke-dashoffset="590.6"></circle>
-      </svg>
-      <div class="gauge-center">
-        <div id="gaugeScore" class="gauge-score">--</div>
-        <div class="gauge-pct">READY</div>
-        <div id="gaugeLabel" class="gauge-label">لم يتم الفحص بعد</div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 220 220">
+          <circle class="gauge-track" cx="110" cy="110" r="94"></circle>
+          <circle id="gaugeFill" class="gauge-fill" cx="110" cy="110" r="94"
+            stroke-dasharray="590.6" stroke-dashoffset="590.6"></circle>
+        </svg>
+        <div class="gauge-center">
+          <div id="gaugeScore" class="gauge-score">--</div>
+          <div class="gauge-pct">READY</div>
+          <div id="gaugeLabel" class="gauge-label">لم يتم الفحص بعد</div>
+        </div>
       </div>
-    </div>
 
-    <button id="scanBtn" class="btn btn-primary" onclick="runScan()">Start Scan</button>
+      <button id="scanBtn" class="btn btn-primary" onclick="runScan()">Start Scan</button>
 
-    <div id="statGrid" class="stat-grid"></div>
-    <div id="warnZone"></div>
+      <div id="statGrid" class="stat-grid"></div>
+      <div id="warnZone"></div>
 
-    <div class="btn-row">
-      <button id="boostBtn" class="btn btn-blue" onclick="boostAndPlay()" disabled>BOOST & PLAY</button>
-    </div>
-  </section>
+      <div class="btn-row">
+        <button id="boostBtn" class="btn btn-blue" onclick="boostAndPlay()" disabled>BOOST & PLAY</button>
+      </div>
+    </section>
+  </div>
 
-  <!-- HIGH PERFORMANCE MODE -->
-  <section id="perfMode">
-    <h2 class="section-title display">High Performance Mode</h2>
-    <p class="section-desc">يقلل العمليات غير الضرورية والإشعارات أثناء اللعب، ضمن الصلاحيات التي يسمح بها نظام التشغيل.</p>
-    <div class="panel">
-      <div class="toggle-row">
+  <!-- ================= PAGE 2: PRO TACTICS & GUIDE ================= -->
+  <div id="page-tactics" class="page-section">
+    <section>
+      <h2 class="section-title display">دليل المحترفين والتكتيك</h2>
+      <p class="section-desc">أسرار الخطط، أساليب اللعب الصحيحة، وطرق الدفاع والهجوم لتحقيق الفوز في eFootball Mobile.</p>
+      
+      <div class="panel" style="margin-top:0">
+        <!-- Tabs -->
+        <div class="tactics-tabs">
+          <div class="tactic-tab active" onclick="switchTacticTab(event, 'tab-defense')">🛡️ الدفاع المحترف</div>
+          <div class="tactic-tab" onclick="switchTacticTab(event, 'tab-attack')">⚡ الهجوم وبناء اللعب</div>
+          <div class="tactic-tab" onclick="switchTacticTab(event, 'tab-meta')">📈 خطط المتا (Meta)</div>
+        </div>
+
+        <!-- Tab 1: Defense -->
+        <div id="tab-defense" class="tactic-content active">
+          <div class="tactic-card-item">
+            <h3><span>🛡️</span> سر الـ Match-Up والتحرش</h3>
+            <p>لا تضغط زر الضغط المباشر (Press) بعنف مع المدافع، بل اعتمد على زر (Match-Up) لغلق المساحات وتغطية زوايا التمرير، واستخدم الضغط بـ 2-Press بحذر شديد فقط عندما يكون الخصم ظهره للمرمى.</p>
+          </div>
+          <div class="tactic-card-item">
+            <h3><span>🛑</span> خط الدفاع المتقدم والتمركز</h3>
+            <p>تأكد من اختيار مدافعين بمهارة "Build Up" مع قدرة عالية على القفز والالتحامات البدنية، وتجنب تحريك قلب الدفاع يدوياً من مكانه لكيلا تترك ثغرات خلفك.</p>
+          </div>
+        </div>
+
+        <!-- Tab 2: Attack -->
+        <div id="tab-attack" class="tactic-content">
+          <div class="tactic-card-item">
+            <h3><span>🎯</span> التمرير وثلاثية البناء</h3>
+            <p>لا تستعجل الهجوم الطولي العشوائي. استخدم التمريرات القصيرة بين خط الوسط والهجوم لسحب دفاع الخصم، ثم اختر التوقيت المناسب لتمريرة "One-Two" (التمرير والركض).</p>
+          </div>
+          <div class="tactic-card-item">
+            <h3><span>🏃‍♂️</span> استغلال أطراف الملعب</h3>
+            <p>أجنحة بمهارة "Prolific Winger" أو "Roaming Flank" تصنع الفارق. اعتمد على المراوغة الخفيفة (Sharp Touch) لفتح زاوية عرضية دقيقة نحو رأس الحربة.</p>
+          </div>
+        </div>
+
+        <!-- Tab 3: Meta Tactics -->
+        <div id="tab-meta" class="tactic-content">
+          <div class="tactic-card-item">
+            <h3><span>⭐</span> أفضل أساليب اللعب</h3>
+            <p>أسلوب **Quick Counter** (الارتداد السريع) هو الأفضل حالياً للمباريات السريعة، بينما أسلوب **Possession Game** يناسب اللاعبين الذين يفضلون الاستحواذ والتحكم الكامل بإيقاع اللعب.</p>
+          </div>
+          <div class="tactic-card-item">
+            <h3><span>📌</span> اختيار المدرب المناسب</h3>
+            <p>احرص على رفع توافق أسلوب اللعب (Proficiency) لديك لأكثر من 100 مع المدرب لضمان التحرك التلقائي الذكي لجميع اللاعبين على أرضية الملعب.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= PAGE 3: PERFORMANCE & SYSTEM ================= -->
+  <div id="page-system" class="page-section">
+    <section>
+      <h2 class="section-title display">System & Performance</h2>
+      <p class="section-desc">تحكم في إعدادات الأداء، وضع عدم الإزعاج، وأنماط اللعب.</p>
+
+      <div class="panel">
+        <div class="toggle-row">
+          <div class="toggle-copy">
+            <div class="t-name">HIGH PERFORMANCE MODE</div>
+            <div class="t-desc">أولوية لتجربة اللعب وتقليل المشتتات قدر الإمكان.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="perfToggle" onchange="togglePerf(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div id="perfStatus" class="status-pill"><span class="dot"></span> Performance Mode: OFF</div>
+      </div>
+
+      <div class="panel">
         <div class="toggle-copy">
-          <div class="t-name">HIGH PERFORMANCE MODE</div>
-          <div class="t-desc">أولوية لتجربة اللعب وتقليل المشتتات قدر الإمكان.</div>
+          <div class="t-name">Gaming DND (مدة الوضع)</div>
         </div>
-        <label class="switch">
-          <input type="checkbox" id="perfToggle" onchange="togglePerf(this.checked)">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div id="perfStatus" class="status-pill"><span class="dot"></span> Performance Mode: OFF</div>
-    </div>
-  </section>
-
-  <!-- GAMING DND -->
-  <section>
-    <h2 class="section-title display">Gaming DND</h2>
-    <p class="section-desc">يقلل الإزعاج أثناء اللعب بكتم الإشعارات ضمن صلاحيات النظام.</p>
-    <div class="panel">
-      <div class="toggle-copy">
-        <div class="t-name">مدة الوضع</div>
-      </div>
-      <div class="chip-row" id="dndChips">
-        <div class="chip" data-v="30">30 دقيقة</div>
-        <div class="chip active" data-v="60">ساعة</div>
-        <div class="chip" data-v="120">ساعتين</div>
-        <div class="chip" data-v="0">حتى إيقافه يدويًا</div>
-      </div>
-      <button class="btn btn-primary" style="margin-top:16px" onclick="startGamingDND()">START GAMING</button>
-      <div id="dndStatus" class="status-pill"><span class="dot"></span> غير مفعّل</div>
-    </div>
-  </section>
-
-  <!-- RAM & BACKGROUND -->
-  <section>
-    <h2 class="section-title display">RAM Usage</h2>
-    <p class="section-desc">يراقب استهلاك الذاكرة والتطبيقات العاملة في الخلفية.</p>
-    <div class="panel">
-      <div class="bar-legend"><span>RAM Used: <b id="ramUsed">9.2 GB</b></span><span>Available: <b id="ramFree">6.8 GB</b></span></div>
-      <div class="bar-track"><div id="ramBar" class="bar-fill" style="width:57%;background:linear-gradient(90deg,var(--warn),#FFD166)"></div></div>
-      <div id="ramIndicator" class="indicator">🟡 متوسط</div>
-      <p id="ramTip" class="section-desc" style="margin-top:10px;margin-bottom:0">هناك ضغط متوسط على الذاكرة. أغلق التطبيقات غير الضرورية قبل اللعب لأفضل أداء.</p>
-    </div>
-  </section>
-
-  <!-- STORAGE -->
-  <section>
-    <h2 class="section-title display">Game Storage</h2>
-    <p class="section-desc">يعرض المساحة المستخدمة والملفات المؤقتة التي يمكن حذفها بأمان.</p>
-    <div class="panel">
-      <div class="bar-legend"><span>مستخدمة: <b id="stUsed">61.4 GB</b></span><span>متبقية: <b id="stFree">18.9 GB</b></span></div>
-      <div class="bar-track"><div id="stBar" class="bar-fill" style="width:76%;background:linear-gradient(90deg,var(--danger),#FF8FA3)"></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
-        <div>
-          <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:13.5px">ملفات مؤقتة قابلة للحذف</div>
-          <div class="t-desc" style="font-size:12px;color:var(--text-dim)"><span id="cacheSize">2.3 GB</span> يمكن تحريرها بأمان</div>
+        <div class="chip-row" id="dndChips">
+          <div class="chip" data-v="30">30 دقيقة</div>
+          <div class="chip active" data-v="60">ساعة</div>
+          <div class="chip" data-v="120">ساعتين</div>
+          <div class="chip" data-v="0">حتى إيقافه يدويًا</div>
         </div>
-        <button class="btn btn-ghost" style="width:auto;padding:10px 16px" onclick="cleanStorage()">تنظيف الآن</button>
+        <button class="btn btn-primary" style="margin-top:14px" onclick="startGamingDND()">START GAMING</button>
+        <div id="dndStatus" class="status-pill"><span class="dot"></span> غير مفعّل</div>
       </div>
-    </div>
-  </section>
 
-  <!-- NETWORK -->
-  <section>
-    <h2 class="section-title display">Network Test</h2>
-    <p class="section-desc">يقيس Ping والسرعة والاستقرار قبل الدخول إلى مباريات Online.</p>
-    <div class="panel">
-      <button id="netBtn" class="btn btn-ghost" onclick="runNetTest()">NETWORK TEST</button>
-      <div class="net-grid" id="netGrid" style="display:none">
-        <div class="net-cell"><div class="v" id="netPing">--</div><div class="l">Ping (ms)</div></div>
-        <div class="net-cell"><div class="v" id="netDown">--</div><div class="l">Download</div></div>
-        <div class="net-cell"><div class="v" id="netUp">--</div><div class="l">Upload</div></div>
+      <h2 class="section-title display" style="margin-top:10px">Gaming Profiles</h2>
+      <div class="profile-grid" id="profileGrid">
+        <div class="profile-card active" data-p="balanced">
+          <div class="profile-name">Balanced</div>
+          <div class="profile-desc">استخدام يومي طبيعي.</div>
+        </div>
+        <div class="profile-card" data-p="performance">
+          <div class="profile-name">Performance</div>
+          <div class="profile-desc">أقصى أداء للعب.</div>
+        </div>
+        <div class="profile-card" data-p="battery">
+          <div class="profile-name">Battery Saver</div>
+          <div class="profile-desc">توفير الطاقة.</div>
+        </div>
+        <div class="profile-card" data-p="competitive">
+          <div class="profile-name">Competitive</div>
+          <div class="profile-desc">أقل مشتتات للمنافسة.</div>
+        </div>
       </div>
-      <div id="netVerdict" class="net-verdict" style="display:none"></div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- PROFILES -->
-  <section>
-    <h2 class="section-title display">Gaming Profiles</h2>
-    <p class="section-desc">اختر النمط المناسب لطريقة لعبك.</p>
-    <div class="profile-grid" id="profileGrid">
-      <div class="profile-card active" data-p="balanced">
-        <div class="profile-name">Balanced</div>
-        <div class="profile-desc">للاستخدام الطبيعي اليومي.</div>
-      </div>
-      <div class="profile-card" data-p="performance">
-        <div class="profile-name">Performance</div>
-        <div class="profile-desc">لأفضل أداء ممكن أثناء اللعب.</div>
-      </div>
-      <div class="profile-card" data-p="battery">
-        <div class="profile-name">Battery Saver</div>
-        <div class="profile-desc">لتقليل استهلاك البطارية.</div>
-      </div>
-      <div class="profile-card" data-p="competitive">
-        <div class="profile-name">Competitive</div>
-        <div class="profile-desc">أقل مشتتات وأفضل استقرار للمنافسة.</div>
-      </div>
-    </div>
-  </section>
+  <!-- ================= PAGE 4: NETWORK & STORAGE ================= -->
+  <div id="page-net" class="page-section">
+    <section>
+      <h2 class="section-title display">Network & Storage</h2>
+      <p class="section-desc">مراقبة استهلاك الذاكرة، مساحة التخزين، وفحص اتصال الإنترنت.</p>
 
-  <!-- TELEGRAM -->
-  <section>
+      <!-- RAM -->
+      <div class="panel">
+        <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:6px">RAM Usage</div>
+        <div class="bar-legend"><span>RAM Used: <b id="ramUsed">9.2 GB</b></span><span>Available: <b id="ramFree">6.8 GB</b></span></div>
+        <div class="bar-track"><div id="ramBar" class="bar-fill" style="width:57%;background:linear-gradient(90deg,var(--warn),#FFD166)"></div></div>
+        <div id="ramIndicator" class="indicator">🟡 متوسط</div>
+      </div>
+
+      <!-- STORAGE -->
+      <div class="panel">
+        <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:6px">Game Storage</div>
+        <div class="bar-legend"><span>مستخدمة: <b id="stUsed">61.4 GB</b></span><span>متبقية: <b id="stFree">18.9 GB</b></span></div>
+        <div class="bar-track"><div id="stBar" class="bar-fill" style="width:76%;background:linear-gradient(90deg,var(--danger),#FF8FA3)"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+          <div>
+            <div class="t-name" style="font-size:13px">ملفات مؤقتة</div>
+            <div class="t-desc"><span id="cacheSize">2.3 GB</span> يمكن تحريرها بأمان</div>
+          </div>
+          <button class="btn btn-ghost" style="width:auto;padding:8px 14px;font-size:12.5px" onclick="cleanStorage()">تنظيف</button>
+        </div>
+      </div>
+
+      <!-- NETWORK TEST -->
+      <div class="panel">
+        <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:10px">Network Test</div>
+        <button id="netBtn" class="btn btn-ghost" onclick="runNetTest()">بدء اختبار الشبكة</button>
+        <div class="net-grid" id="netGrid" style="display:none">
+          <div class="net-cell"><div class="v" id="netPing">--</div><div class="l">Ping (ms)</div></div>
+          <div class="net-cell"><div class="v" id="netDown">--</div><div class="l">Download</div></div>
+          <div class="net-cell"><div class="v" id="netUp">--</div><div class="l">Upload</div></div>
+        </div>
+        <div id="netVerdict" class="net-verdict" style="display:none"></div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- TELEGRAM BANNER -->
+  <section style="padding-top:0">
     <div class="tg-banner">
       <div class="tg-banner-icon">✈️</div>
       <div>
@@ -373,12 +463,21 @@
     </div>
   </section>
 
-  <footer>Gaming Performance Center · نموذج تفاعلي (Prototype)</footer>
+  <footer>Gaming Performance Center · نظام الصفحات المتعددة</footer>
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
+// SWITCH SUB-PAGES
+function switchPage(pageId, event){
+  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 function showToast(msg, ms=2200){
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -419,7 +518,6 @@ function runScan(){
     const score = Math.round(components.reduce((a,c)=>a+c.val,0)/components.length);
     lastScore = score;
 
-    // gauge
     const circumference = 590.6;
     const offset = circumference - (circumference*score/100);
     const fill = document.getElementById('gaugeFill');
@@ -431,7 +529,6 @@ function runScan(){
     document.getElementById('gaugeLabel').style.color = score>=75?'var(--lime)':(score>=55?'var(--warn)':'var(--danger)');
     document.getElementById('gaugeLabel').style.background = score>=75?'rgba(182,255,62,.1)':(score>=55?'rgba(255,176,32,.12)':'rgba(255,84,112,.12)');
 
-    // cards
     const grid = document.getElementById('statGrid');
     components.forEach((c,i)=>{
       const st = statusFor(c.val);
@@ -445,7 +542,6 @@ function runScan(){
       setTimeout(()=>el.classList.add('show'), i*60);
     });
 
-    // warnings
     const warnZone = document.getElementById('warnZone');
     const warnings = [];
     const temp = components.find(c=>c.key==='Temperature');
@@ -464,6 +560,14 @@ function runScan(){
     btn.textContent = 'Scan Again';
     document.getElementById('boostBtn').disabled = false;
   }, 1400);
+}
+
+// TACTICS TABS SWITCHER
+function switchTacticTab(e, tabId){
+  document.querySelectorAll('.tactic-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tactic-content').forEach(c => c.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
 }
 
 function boostAndPlay(){
