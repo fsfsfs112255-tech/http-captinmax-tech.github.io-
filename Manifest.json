@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Max pes",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Max pes",
+  "start_url": "/",
+  "theme_color": "#ffffff"
+}
