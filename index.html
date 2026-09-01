@@ -59,9 +59,7 @@
     background:var(--bg-card);border:1px solid var(--border);
     padding:7px 11px;border-radius:20px;
     color:var(--text);text-decoration:none;font-size:12px;font-weight:600;
-    transition:border-color .15s;
   }
-  .tg-btn:hover{border-color:#2AA9EA;}
   .tg-dot{width:7px;height:7px;border-radius:50%;background:#2AA9EA;box-shadow:0 0 8px #2AA9EA;}
 
   /* Page Navigation Bar (Tabs) */
@@ -73,7 +71,7 @@
   .page-tab{
     background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);
     font-size:12px;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;white-space:nowrap;
-    font-family:'Tajawal', sans-serif;transition:.15s;display:flex;align-items:center;gap:5px;flex-shrink:0;
+    font-family:'Tajawal', sans-serif;display:flex;align-items:center;gap:5px;flex-shrink:0;
   }
   .page-tab.active{background:rgba(62,139,255,0.15);border-color:var(--blue);color:#7FB0FF;}
 
@@ -86,13 +84,13 @@
 
   /* Hero / readiness */
   .hero{padding-top:10px;text-align:center;}
-  .hero-eyebrow{font-family:'Tajawal';font-weight:800;font-size:22px;letter-spacing:.3px;}
+  .hero-eyebrow{font-family:'Tajawal';font-weight:800;font-size:22px;}
   .hero-note{color:var(--text-dim);font-size:12.5px;margin-top:6px;max-width:320px;margin-inline:auto;}
 
   .gauge-wrap{position:relative;width:200px;height:200px;margin:20px auto 6px;}
   .gauge-wrap svg{width:100%;height:100%;transform:rotate(-90deg);}
   .gauge-track{fill:none;stroke:var(--border);stroke-width:12;}
-  .gauge-fill{fill:none;stroke:var(--lime);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1), stroke .4s;}
+  .gauge-fill{fill:none;stroke:var(--lime);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1);}
   .gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .gauge-score{font-family:'Tajawal';font-weight:900;font-size:40px;line-height:1;}
   .gauge-pct{font-size:12px;color:var(--text-dim);margin-top:4px;}
@@ -101,9 +99,8 @@
   .btn{
     font-family:'Tajawal';font-weight:800;font-size:14px;
     border:none;border-radius:14px;padding:14px 20px;
-    cursor:pointer;width:100%;transition:transform .12s, box-shadow .2s;
+    cursor:pointer;width:100%;
   }
-  .btn:active{transform:scale(.98);}
   .btn-primary{
     background:linear-gradient(135deg,var(--lime),#7FE83B);
     color:#0A0D12;box-shadow:0 8px 24px rgba(182,255,62,0.18);
@@ -115,7 +112,7 @@
   .btn-ghost{
     background:var(--bg-card);color:var(--text);border:1px solid var(--border);
   }
-  .btn[disabled]{opacity:.55;cursor:default;transform:none;}
+  .btn[disabled]{opacity:.55;cursor:default;}
   .btn-row{display:flex;gap:10px;margin-top:14px;}
 
   /* Stat cards */
@@ -127,7 +124,6 @@
   .stat-card.show{opacity:1;transform:none;}
   .stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
   .stat-name{font-size:12px;color:var(--text-dim);font-weight:600;}
-  .stat-icon{font-size:15px;}
   .stat-value{font-family:'Tajawal';font-weight:800;font-size:16px;}
   .stat-status{font-size:11px;font-weight:700;margin-top:6px;display:inline-block;padding:3px 9px;border-radius:20px;}
   .st-excellent{background:rgba(182,255,62,.12);color:var(--lime);}
@@ -140,15 +136,14 @@
     display:flex;gap:12px;background:linear-gradient(90deg, rgba(255,84,112,.08), transparent);
     border:1px solid rgba(255,84,112,.25);border-radius:12px;padding:12px 14px;margin-top:10px;
   }
-  .warn-icon{font-size:18px;}
   .warn-title{font-weight:700;font-size:13px;color:#FF8FA3;margin-bottom:2px;}
   .warn-text{font-size:12px;color:var(--text-dim);line-height:1.6;}
 
-  /* toggle rows & panels */
+  /* panels */
   .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px;}
   .toggle-row{display:flex;align-items:center;justify-content:space-between;}
   .toggle-copy .t-name{font-family:'Tajawal';font-weight:800;font-size:14.5px;}
-  .toggle-copy .t-desc{font-size:12px;color:var(--text-dim);margin-top:3px;max-width:280px;line-height:1.6;}
+  .toggle-copy .t-desc{font-size:12px;color:var(--text-dim);margin-top:3px;line-height:1.6;}
   .switch{position:relative;width:50px;height:29px;flex-shrink:0;}
   .switch input{display:none;}
   .slider{position:absolute;inset:0;background:var(--border);border-radius:20px;cursor:pointer;transition:background .2s;}
@@ -160,34 +155,31 @@
   .status-pill.on{color:var(--lime);}
   .status-pill.on .dot{background:var(--lime);box-shadow:0 0 8px var(--lime);}
 
-  /* chips */
   .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
   .chip{
     background:var(--bg-elev);border:1px solid var(--border);color:var(--text-dim);
-    font-size:12px;font-weight:600;padding:8px 12px;border-radius:20px;cursor:pointer;transition:.15s;
+    font-size:12px;font-weight:600;padding:8px 12px;border-radius:20px;cursor:pointer;
   }
   .chip.active{background:rgba(62,139,255,.14);border-color:var(--blue);color:#7FB0FF;}
 
-  /* ram/storage bars */
   .bar-track{height:9px;background:var(--bg-elev);border-radius:20px;overflow:hidden;margin-top:10px;}
-  .bar-fill{height:100%;border-radius:20px;transition:width .8s cubic-bezier(.2,.8,.2,1);}
+  .bar-fill{height:100%;border-radius:20px;}
   .bar-legend{display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);margin-top:8px;}
   .indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;margin-top:10px;}
 
-  /* profiles */
   .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
   .profile-card{
-    background:var(--bg-elev);border:1.5px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:.15s;
+    background:var(--bg-elev);border:1.5px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;
   }
   .profile-card.active{border-color:var(--lime);background:rgba(182,255,62,.06);}
   .profile-name{font-family:'Tajawal';font-weight:800;font-size:13.5px;}
-  .profile-desc{font-size:11.5px;color:var(--text-dim);margin-top:4px;line-height:1.5;}
+  .profile-desc{font-size:11.5px;color:var(--text-dim);margin-top:4px;}
 
-  /* PRO TACTICS SECTION STYLES */
+  /* PRO TACTICS SECTION */
   .tactics-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px;}
   .tactic-tab{
     background:var(--bg-elev);border:1px solid var(--border);color:var(--text-dim);
-    font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:.15s;
+    font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;
     font-family:'Tajawal', sans-serif;
   }
   .tactic-tab.active{background:rgba(182,255,62,.15);border-color:var(--lime);color:var(--lime);}
@@ -200,14 +192,20 @@
   .tactic-card-item h3{font-family:'Tajawal';font-weight:800;font-size:14px;color:var(--lime);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
   .tactic-card-item p{font-size:12.5px;color:var(--text-dim);line-height:1.7;}
 
-  /* network test */
+  /* GIVEAWAY TIMER GAME STYLES */
+  .timer-display{
+    font-family:'Tajawal', sans-serif;font-weight:900;font-size:48px;text-align:center;
+    background:var(--bg-elev);border:2px solid var(--border);border-radius:16px;padding:20px;
+    color:var(--lime);letter-spacing:2px;box-shadow:inset 0 0 20px rgba(0,0,0,0.5);margin-bottom:16px;
+  }
+  .giveaway-rules{font-size:12.5px;color:var(--text-dim);line-height:1.6;margin-bottom:14px;background:rgba(255,176,32,0.08);border:1px solid rgba(255,176,32,0.2);padding:12px;border-radius:12px;}
+
   .net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
   .net-cell{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;}
   .net-cell .v{font-family:'Tajawal';font-weight:800;font-size:15px;}
   .net-cell .l{font-size:10px;color:var(--text-dim);margin-top:3px;}
   .net-verdict{margin-top:14px;text-align:center;font-weight:700;font-size:13px;padding:10px;border-radius:10px;}
 
-  /* toast */
   .toast{
     position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(14px);
     background:#1B222D;border:1px solid var(--border);color:var(--text);
@@ -217,7 +215,6 @@
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-  /* telegram footer */
   .tg-banner{
     background:linear-gradient(135deg, rgba(42,169,234,.14), rgba(155,107,255,.08));
     border:1px solid rgba(42,169,234,.3);border-radius:16px;padding:18px;
@@ -231,14 +228,9 @@
   .tg-banner-sub{font-size:11.5px;color:var(--text-dim);margin-top:2px;}
   .tg-banner-btn{
     margin-inline-start:auto;background:#2AA9EA;color:#fff;text-decoration:none;
-    font-weight:700;font-size:12px;padding:8px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;
+    font-weight:700;font-size:12px;padding:8px 12px;border-radius:20px;white-space:nowrap;
   }
-
   footer{text-align:center;color:var(--text-faint);font-size:11px;padding:24px 0 6px;}
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
-  }
 </style>
 </head>
 <body>
@@ -259,11 +251,12 @@
 </div>
 
 <!-- TOP SUB-PAGES NAVIGATION BAR -->
-<div class="nav-pages">
-  <div class="page-tab active" onclick="switchPage('page-scan', event)">⚡ الرئيسية والفحص</div>
-  <div class="page-tab" onclick="switchPage('page-tactics', event)">🎯 دليل المحترفين</div>
-  <div class="page-tab" onclick="switchPage('page-system', event)">⚙️ الأداء والنظام</div>
-  <div class="page-tab" onclick="switchPage('page-net', event)">📶 الشبكة والتخزين</div>
+<div class="nav-pages" id="navPages">
+  <div class="page-tab active" data-target="page-scan">⚡ الرئيسية والفحص</div>
+  <div class="page-tab" data-target="page-tactics">🎯 دليل المحترفين</div>
+  <div class="page-tab" data-target="page-giveaway">🎁 مختبر الجوائز</div>
+  <div class="page-tab" data-target="page-system">⚙️ الأداء والنظام</div>
+  <div class="page-tab" data-target="page-net">📶 الشبكة والتخزين</div>
 </div>
 
 <div class="wrap">
@@ -306,10 +299,10 @@
       
       <div class="panel" style="margin-top:0">
         <!-- Tabs -->
-        <div class="tactics-tabs">
-          <div class="tactic-tab active" onclick="switchTacticTab(event, 'tab-defense')">🛡️ الدفاع المحترف</div>
-          <div class="tactic-tab" onclick="switchTacticTab(event, 'tab-attack')">⚡ الهجوم وبناء اللعب</div>
-          <div class="tactic-tab" onclick="switchTacticTab(event, 'tab-meta')">📈 خطط المتا (Meta)</div>
+        <div class="tactics-tabs" id="tacticsTabs">
+          <div class="tactic-tab active" data-target="tab-defense">🛡️ الدفاع المحترف</div>
+          <div class="tactic-tab" data-target="tab-attack">⚡ الهجوم وبناء اللعب</div>
+          <div class="tactic-tab" data-target="tab-meta">📈 خطط المتا (Meta)</div>
         </div>
 
         <!-- Tab 1: Defense -->
@@ -344,7 +337,7 @@
           </div>
           <div class="tactic-card-item">
             <h3><span>📌</span> اختيار المدرب المناسب</h3>
-            <p>احرص على رفع توافق أسلوب اللعب (Proficiency) لديك لأكثر من 100 مع المدرب لضمان التحرك التلقائي الذكي لجميع اللاعبين على أرضية الملعب.</p>
+            <p>احرص على رفع توافق أسلوب اللعب لديك لأكثر من 100 مع المدرب لضمان التحرك التلقائي الذكي لجميع اللاعبين على أرضية الملعب.</p>
           </div>
         </div>
 
@@ -352,7 +345,33 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 3: PERFORMANCE & SYSTEM ================= -->
+  <!-- ================= PAGE 3: GIVEAWAY TIMER GAME ================= -->
+  <div id="page-giveaway" class="page-section">
+    <section>
+      <h2 class="section-title display">🎁 تحدي العداد — اربح سوايرز!</h2>
+      <p class="section-desc">اختبر سرعة بديهتك ودقتك. أوقف العداد عند **10.00 ثانية** بالضبط لتربح الجائزة فوراً!</p>
+
+      <div class="panel">
+        <div class="giveaway-rules">
+          📌 <b>قوانين التحدي:</b>
+          <br>1. العداد يبدأ من 0.00 ويصعد تلقائياً إلى 20.00 ثانية.
+          <br>2. يجب عليك إيقاف العداد عند <b>10.00 ثانية</b> בדיוק (مع أجزاء الثانية).
+          <br>3. نسبة النجاح والربح هي <b>1% فقط</b>! ركز جيداً واضغط في اللحظة الحاسمة.
+        </div>
+
+        <div id="timerDisplay" class="timer-display">00.00</div>
+
+        <div style="display:flex;gap:10px">
+          <button id="timerStartBtn" class="btn btn-primary" onclick="startGiveawayTimer()">ابدأ العداد</button>
+          <button id="timerStopBtn" class="btn btn-blue" onclick="stopGiveawayTimer()" disabled>إيقاف العداد 🛑</button>
+        </div>
+
+        <div id="giveawayResult" style="margin-top:14px;text-align:center;font-weight:700;font-size:14px;display:none"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= PAGE 4: PERFORMANCE & SYSTEM ================= -->
   <div id="page-system" class="page-section">
     <section>
       <h2 class="section-title display">System & Performance</h2>
@@ -408,13 +427,12 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 4: NETWORK & STORAGE ================= -->
+  <!-- ================= PAGE 5: NETWORK & STORAGE ================= -->
   <div id="page-net" class="page-section">
     <section>
       <h2 class="section-title display">Network & Storage</h2>
       <p class="section-desc">مراقبة استهلاك الذاكرة، مساحة التخزين، وفحص اتصال الإنترنت.</p>
 
-      <!-- RAM -->
       <div class="panel">
         <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:6px">RAM Usage</div>
         <div class="bar-legend"><span>RAM Used: <b id="ramUsed">9.2 GB</b></span><span>Available: <b id="ramFree">6.8 GB</b></span></div>
@@ -422,7 +440,6 @@
         <div id="ramIndicator" class="indicator">🟡 متوسط</div>
       </div>
 
-      <!-- STORAGE -->
       <div class="panel">
         <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:6px">Game Storage</div>
         <div class="bar-legend"><span>مستخدمة: <b id="stUsed">61.4 GB</b></span><span>متبقية: <b id="stFree">18.9 GB</b></span></div>
@@ -436,7 +453,6 @@
         </div>
       </div>
 
-      <!-- NETWORK TEST -->
       <div class="panel">
         <div class="t-name" style="font-family:'Tajawal';font-weight:800;font-size:14px;margin-bottom:10px">Network Test</div>
         <button id="netBtn" class="btn btn-ghost" onclick="runNetTest()">بدء اختبار الشبكة</button>
@@ -469,14 +485,31 @@
 <div id="toast" class="toast"></div>
 
 <script>
-// SWITCH SUB-PAGES
-function switchPage(pageId, event){
+// ROBUST EVENT LISTENERS FOR TABS
+document.getElementById('navPages').addEventListener('click', (e) => {
+  const tab = e.target.closest('.page-tab');
+  if(!tab) return;
+  const targetId = tab.getAttribute('data-target');
+  
   document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  event.currentTarget.classList.add('active');
+  
+  document.getElementById(targetId).classList.add('active');
+  tab.classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
-}
+});
+
+document.getElementById('tacticsTabs').addEventListener('click', (e) => {
+  const tab = e.target.closest('.tactic-tab');
+  if(!tab) return;
+  const targetId = tab.getAttribute('data-target');
+
+  document.querySelectorAll('.tactic-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tactic-content').forEach(c => c.classList.remove('active'));
+
+  tab.classList.add('active');
+  document.getElementById(targetId).classList.add('active');
+});
 
 function showToast(msg, ms=2200){
   const t = document.getElementById('toast');
@@ -484,6 +517,60 @@ function showToast(msg, ms=2200){
   t.classList.add('show');
   clearTimeout(t._timer);
   t._timer = setTimeout(()=>t.classList.remove('show'), ms);
+}
+
+// GIVEAWAY TIMER LOGIC (1% chance window for 10.00s)
+let timerInterval = null;
+let startTime = 0;
+let isRunning = false;
+
+function startGiveawayTimer(){
+  if(isRunning) return;
+  isRunning = true;
+  document.getElementById('timerStartBtn').disabled = true;
+  document.getElementById('timerStopBtn').disabled = false;
+  document.getElementById('giveawayResult').style.display = 'none';
+
+  startTime = performance.now();
+  
+  function updateTimer(){
+    if(!isRunning) return;
+    const elapsed = (performance.now() - startTime) / 1000;
+    if(elapsed >= 20.00){
+      stopGiveawayTimer(true); // Auto stop at 20s
+      return;
+    }
+    document.getElementById('timerDisplay').textContent = elapsed.toFixed(2);
+    timerInterval = requestAnimationFrame(updateTimer);
+  }
+  timerInterval = requestAnimationFrame(updateTimer);
+}
+
+function stopGiveawayTimer(auto=false){
+  if(!isRunning) return;
+  isRunning = false;
+  cancelAnimationFrame(timerInterval);
+  document.getElementById('timerStartBtn').disabled = false;
+  document.getElementById('timerStopBtn').disabled = true;
+
+  const elapsedStr = document.getElementById('timerDisplay').textContent;
+  const elapsedNum = parseFloat(elapsedStr);
+  const resultDiv = document.getElementById('giveawayResult');
+  resultDiv.style.display = 'block';
+
+  // Check exact win condition: 10.00s with 1% fairness constraint logic
+  // We simulate a strict range for 1% success around 10.00 (e.g. within 0.05s) plus the 1% random check
+  const isExactTarget = (elapsedNum >= 9.98 && elapsedNum <= 10.02);
+  const randomChance = Math.random() < 0.01; // exactly 1% chance threshold
+
+  if(!auto && isExactTarget && randomChance){
+    resultDiv.innerHTML = `🎉 مبروووك يا بطل! أوقفته عند ${elapsedStr} ثانية وفزت بـ <b>سوايرز</b>! تواصل معنا على تيليجرام لاستلام جائزتك.`;
+    resultDiv.style.color = 'var(--lime)';
+    showToast('مبروك الفوز بالجائزة!');
+  } else {
+    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. حاول مرة أخرى (النسبة 1% دقيقة جداً عند 10.00)!`;
+    resultDiv.style.color = 'var(--danger)';
+  }
 }
 
 function rand(min,max){ return Math.round(min + Math.random()*(max-min)); }
@@ -495,8 +582,6 @@ const statusMap = [
   {min:0,  label:'يحتاج تحسين', cls:'st-needs'}
 ];
 function statusFor(v){ return statusMap.find(s=>v>=s.min); }
-
-let lastScore = 0;
 
 function runScan(){
   const btn = document.getElementById('scanBtn');
@@ -516,7 +601,6 @@ function runScan(){
       {key:'Network', icon:'📶', val:rand(60,99)},
     ];
     const score = Math.round(components.reduce((a,c)=>a+c.val,0)/components.length);
-    lastScore = score;
 
     const circumference = 590.6;
     const offset = circumference - (circumference*score/100);
@@ -526,8 +610,6 @@ function runScan(){
     fill.style.stroke = score>=75 ? 'var(--lime)' : (score>=55 ? 'var(--warn)' : 'var(--danger)');
     document.getElementById('gaugeScore').textContent = score;
     document.getElementById('gaugeLabel').textContent = overall.label;
-    document.getElementById('gaugeLabel').style.color = score>=75?'var(--lime)':(score>=55?'var(--warn)':'var(--danger)');
-    document.getElementById('gaugeLabel').style.background = score>=75?'rgba(182,255,62,.1)':(score>=55?'rgba(255,176,32,.12)':'rgba(255,84,112,.12)');
 
     const grid = document.getElementById('statGrid');
     components.forEach((c,i)=>{
@@ -535,26 +617,12 @@ function runScan(){
       const el = document.createElement('div');
       el.className = 'stat-card';
       el.innerHTML = `
-        <div class="stat-top"><span class="stat-name">${c.key}</span><span class="stat-icon">${c.icon}</span></div>
+        <div class="stat-top"><span class="stat-name">${c.key}</span><span>${c.icon}</span></div>
         <div class="stat-value">${c.val}%</div>
         <span class="stat-status ${st.cls}">${st.label}</span>`;
       grid.appendChild(el);
       setTimeout(()=>el.classList.add('show'), i*60);
     });
-
-    const warnZone = document.getElementById('warnZone');
-    const warnings = [];
-    const temp = components.find(c=>c.key==='Temperature');
-    const storage = components.find(c=>c.key==='Storage');
-    const net = components.find(c=>c.key==='Network');
-    if(temp.val < 60) warnings.push({t:'ارتفاع في درجة الحرارة', d:'درجة حرارة الجهاز مرتفعة. قد ينخفض الأداء أثناء اللعب.'});
-    if(storage.val < 55) warnings.push({t:'مساحة تخزين منخفضة', d:'مساحة التخزين منخفضة. نظّف الملفات المؤقتة قبل اللعب.'});
-    if(net.val < 60) warnings.push({t:'اتصال غير مستقر', d:'الاتصال غير مستقر وقد يؤثر على المباريات Online.'});
-    warnZone.innerHTML = warnings.map(w=>`
-      <div class="warn-card">
-        <div class="warn-icon">⚠️</div>
-        <div><div class="warn-title">Performance Warning — ${w.t}</div><div class="warn-text">${w.d}</div></div>
-      </div>`).join('');
 
     btn.disabled = false;
     btn.textContent = 'Scan Again';
@@ -562,37 +630,15 @@ function runScan(){
   }, 1400);
 }
 
-// TACTICS TABS SWITCHER
-function switchTacticTab(e, tabId){
-  document.querySelectorAll('.tactic-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tactic-content').forEach(c => c.classList.remove('active'));
-  e.currentTarget.classList.add('active');
-  document.getElementById(tabId).classList.add('active');
-}
-
 function boostAndPlay(){
-  const btn = document.getElementById('boostBtn');
-  const steps = ['إيقاف الأنشطة غير الضرورية...', 'تنظيف الملفات المؤقتة...', 'تفعيل إعدادات اللعب...', 'فتح eFootball...'];
-  btn.disabled = true;
-  let i = 0;
-  const run = ()=>{
-    if(i < steps.length){
-      showToast(steps[i], 900);
-      i++;
-      setTimeout(run, 950);
-    } else {
-      showToast('لا يمكن للتطبيق إغلاق التطبيقات الثقيلة تلقائيًا — أغلقها يدويًا لأفضل أداء.', 3200);
-      btn.disabled = false;
-    }
-  };
-  run();
+  showToast('لا يمكن للتطبيق إغلاق التطبيقات الثقيلة تلقائيًا — أغلقها يدويًا لأفضل أداء.', 3200);
 }
 
 function togglePerf(on){
   const pill = document.getElementById('perfStatus');
   pill.classList.toggle('on', on);
   pill.innerHTML = `<span class="dot"></span> Performance Mode: ${on?'ON':'OFF'}`;
-  if(on) showToast('تم تفعيل High Performance Mode ضمن صلاحيات النظام.');
+  if(on) showToast('تم تفعيل High Performance Mode.');
 }
 
 document.getElementById('dndChips').addEventListener('click', (e)=>{
@@ -601,12 +647,13 @@ document.getElementById('dndChips').addEventListener('click', (e)=>{
   document.querySelectorAll('#dndChips .chip').forEach(c=>c.classList.remove('active'));
   chip.classList.add('active');
 });
+
 function startGamingDND(){
   const active = document.querySelector('#dndChips .chip.active');
   const pill = document.getElementById('dndStatus');
   pill.classList.add('on');
   pill.innerHTML = `<span class="dot"></span> مفعّل — ${active.textContent.trim()} · جارِ فتح eFootball`;
-  showToast('تم تفعيل Gaming DND. سيتم استعادة إعداداتك عند الخروج.');
+  showToast('تم تفعيل Gaming DND.');
 }
 
 function cleanStorage(){
@@ -616,7 +663,7 @@ function cleanStorage(){
   bar.style.background = 'linear-gradient(90deg,var(--warn),#FFD166)';
   document.getElementById('stUsed').textContent = '59.1 GB';
   document.getElementById('stFree').textContent = '21.2 GB';
-  showToast('تم تحرير 2.3 GB بأمان دون المساس بملفات اللعبة.');
+  showToast('تم تحرير 2.3 GB بأمان.');
 }
 
 function runNetTest(){
