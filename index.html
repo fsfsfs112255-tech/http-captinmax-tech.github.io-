@@ -131,14 +131,6 @@
   .st-good{background:rgba(155,107,255,.14);color:#C3A9FF;}
   .st-needs{background:rgba(255,84,112,.14);color:#FF8FA3;}
 
-  /* warnings */
-  .warn-card{
-    display:flex;gap:12px;background:linear-gradient(90deg, rgba(255,84,112,.08), transparent);
-    border:1px solid rgba(255,84,112,.25);border-radius:12px;padding:12px 14px;margin-top:10px;
-  }
-  .warn-title{font-weight:700;font-size:13px;color:#FF8FA3;margin-bottom:2px;}
-  .warn-text{font-size:12px;color:var(--text-dim);line-height:1.6;}
-
   /* panels */
   .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px;}
   .toggle-row{display:flex;align-items:center;justify-content:space-between;}
@@ -199,6 +191,10 @@
     color:var(--lime);letter-spacing:2px;box-shadow:inset 0 0 20px rgba(0,0,0,0.5);margin-bottom:16px;
   }
   .giveaway-rules{font-size:12.5px;color:var(--text-dim);line-height:1.6;margin-bottom:14px;background:rgba(255,176,32,0.08);border:1px solid rgba(255,176,32,0.2);padding:12px;border-radius:12px;}
+  .cooldown-box{
+    background:rgba(255,84,112,0.08);border:1px solid rgba(255,84,112,0.25);color:#FF8FA3;
+    padding:12px;border-radius:12px;font-size:13px;text-align:center;font-weight:700;margin-bottom:14px;display:none;
+  }
 
   .net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
   .net-cell{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;}
@@ -349,15 +345,18 @@
   <div id="page-giveaway" class="page-section">
     <section>
       <h2 class="section-title display">🎁 تحدي العداد — اربح سوايرز!</h2>
-      <p class="section-desc">اختبر سرعة بديهتك ودقتك. أوقف العداد عند **10.00 ثانية** بالضبط لتربح الجائزة فوراً!</p>
+      <p class="section-desc">اختبر سرعة بديهتك ودقتك. أوقف العداد عند **10.00 ثانية** بالضبط لتربح الجائزة!</p>
 
       <div class="panel">
         <div class="giveaway-rules">
           📌 <b>قوانين التحدي:</b>
           <br>1. العداد يبدأ من 0.00 ويصعد تلقائياً إلى 20.00 ثانية.
-          <br>2. يجب عليك إيقاف العداد عند <b>10.00 ثانية</b> בדיוק (مع أجزاء الثانية).
-          <br>3. نسبة النجاح والربح هي <b>1% فقط</b>! ركز جيداً واضغط في اللحظة الحاسمة.
+          <br>2. يجب إيقاف العداد عند <b>10.00 ثانية</b> بالضبط.
+          <br>3. <b>مهم:</b> يمكنك استخدام العداد **مرة واحدة كل 24 ساعة** فقط!
+          <br>4. نسبة الربح الفعلي هي <b>1% فقط</b> عند التوقيت الصحيح تماماً.
         </div>
+
+        <div id="cooldownBox" class="cooldown-box"></div>
 
         <div id="timerDisplay" class="timer-display">00.00</div>
 
@@ -519,12 +518,46 @@ function showToast(msg, ms=2200){
   t._timer = setTimeout(()=>t.classList.remove('show'), ms);
 }
 
-// GIVEAWAY TIMER LOGIC (1% chance window for 10.00s)
+// GIVEAWAY TIMER LOGIC WITH 24-HOUR COOLDOWN
+const COOLDOWN_KEY = 'r2max_giveaway_last_time';
+const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+
+function checkGiveawayCooldown(){
+  const lastTime = localStorage.getItem(COOLDOWN_KEY);
+  const startBtn = document.getElementById('timerStartBtn');
+  const cooldownBox = document.getElementById('cooldownBox');
+
+  if(!lastTime) return;
+
+  const elapsed = Date.now() - parseInt(lastTime, 10);
+  if(elapsed < TWENTY_FOUR_HOURS){
+    const remaining = TWENTY_FOUR_HOURS - elapsed;
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    
+    startBtn.disabled = true;
+    cooldownBox.style.display = 'block';
+    cooldownBox.innerHTML = `⏳ لقد استخدمت محاولتك اليومية. يمكنك المحاولة مرة أخرى بعد: <b>${hours} ساعة و ${minutes} دقيقة</b>`;
+  } else {
+    startBtn.disabled = false;
+    cooldownBox.style.display = 'none';
+  }
+}
+
+// Run cooldown check on page load
+checkGiveawayCooldown();
+
 let timerInterval = null;
 let startTime = 0;
 let isRunning = false;
 
 function startGiveawayTimer(){
+  const lastTime = localStorage.getItem(COOLDOWN_KEY);
+  if(lastTime && (Date.now() - parseInt(lastTime, 10) < TWENTY_FOUR_HOURS)){
+    showToast('عذراً، محاولتك اليومية مستخدمة بالفعل.');
+    return;
+  }
+
   if(isRunning) return;
   isRunning = true;
   document.getElementById('timerStartBtn').disabled = true;
@@ -537,7 +570,7 @@ function startGiveawayTimer(){
     if(!isRunning) return;
     const elapsed = (performance.now() - startTime) / 1000;
     if(elapsed >= 20.00){
-      stopGiveawayTimer(true); // Auto stop at 20s
+      stopGiveawayTimer(true);
       return;
     }
     document.getElementById('timerDisplay').textContent = elapsed.toFixed(2);
@@ -550,25 +583,26 @@ function stopGiveawayTimer(auto=false){
   if(!isRunning) return;
   isRunning = false;
   cancelAnimationFrame(timerInterval);
-  document.getElementById('timerStartBtn').disabled = false;
   document.getElementById('timerStopBtn').disabled = true;
+
+  // Save cooldown timestamp immediately when they make an attempt
+  localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
+  checkGiveawayCooldown();
 
   const elapsedStr = document.getElementById('timerDisplay').textContent;
   const elapsedNum = parseFloat(elapsedStr);
   const resultDiv = document.getElementById('giveawayResult');
   resultDiv.style.display = 'block';
 
-  // Check exact win condition: 10.00s with 1% fairness constraint logic
-  // We simulate a strict range for 1% success around 10.00 (e.g. within 0.05s) plus the 1% random check
   const isExactTarget = (elapsedNum >= 9.98 && elapsedNum <= 10.02);
-  const randomChance = Math.random() < 0.01; // exactly 1% chance threshold
+  const randomChance = Math.random() < 0.01; // 1% chance
 
   if(!auto && isExactTarget && randomChance){
     resultDiv.innerHTML = `🎉 مبروووك يا بطل! أوقفته عند ${elapsedStr} ثانية وفزت بـ <b>سوايرز</b>! تواصل معنا على تيليجرام لاستلام جائزتك.`;
     resultDiv.style.color = 'var(--lime)';
     showToast('مبروك الفوز بالجائزة!');
   } else {
-    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. حاول مرة أخرى (النسبة 1% دقيقة جداً عند 10.00)!`;
+    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. لقد استنفدت محاولتك لليوم، ننتظرك غداً بحماس جديد!`;
     resultDiv.style.color = 'var(--danger)';
   }
 }
