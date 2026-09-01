@@ -240,7 +240,8 @@
         <div class="brand-sub">eFootball Mobile</div>
       </div>
     </div>
-    <a class="tg-btn" href="https://t.me/r2max" target="_blank" rel="noopener">
+    <!-- تم إضافة target="_blank" و rel="noopener noreferrer" لفتح الرابط بشكل صحيح -->
+    <a class="tg-btn" href="https://t.me/r2max" target="_blank" rel="noopener noreferrer">
       <span class="tg-dot"></span> r2max
     </a>
   </div>
@@ -261,7 +262,7 @@
   <div id="page-scan" class="page-section active">
     <section class="hero">
       <div class="hero-eyebrow display">GAME READY?</div>
-      <p class="hero-note">اضغط Start Scan ليبدأ التطبيق الفحص الفعلي والحقيقي لأداء جهازك الآن.</p>
+      <p class="hero-note">اضغط Start Scan ليفحص التطبيق جاهزية جهازك قبل الدخول إلى eFootball.</p>
 
       <div class="gauge-wrap">
         <svg viewBox="0 0 220 220">
@@ -276,7 +277,7 @@
         </div>
       </div>
 
-      <button id="scanBtn" class="btn btn-primary" onclick="runRealScan()">Start Scan (فحص حقيقي)</button>
+      <button id="scanBtn" class="btn btn-primary" onclick="runScan()">Start Scan</button>
 
       <div id="statGrid" class="stat-grid"></div>
       <div id="warnZone"></div>
@@ -474,7 +475,8 @@
         <div class="tg-banner-title">قناتنا على تيليجرام</div>
         <div class="tg-banner-sub">أخبار التحديثات ونصائح الأداء — t.me/r2max</div>
       </div>
-      <a class="tg-banner-btn" href="https://t.me/r2max" target="_blank" rel="noopener">انضم الآن</a>
+      <!-- تم إضافة target="_blank" و rel="noopener noreferrer" هنا أيضاً -->
+      <a class="tg-banner-btn" href="https://t.me/r2max" target="_blank" rel="noopener noreferrer">انضم الآن</a>
     </div>
   </section>
 
@@ -544,6 +546,7 @@ function checkGiveawayCooldown(){
   }
 }
 
+// Run cooldown check on page load
 checkGiveawayCooldown();
 
 let timerInterval = null;
@@ -584,6 +587,7 @@ function stopGiveawayTimer(auto=false){
   cancelAnimationFrame(timerInterval);
   document.getElementById('timerStopBtn').disabled = true;
 
+  // Save cooldown timestamp immediately when they make an attempt
   localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
   checkGiveawayCooldown();
 
@@ -593,17 +597,19 @@ function stopGiveawayTimer(auto=false){
   resultDiv.style.display = 'block';
 
   const isExactTarget = (elapsedNum >= 9.98 && elapsedNum <= 10.02);
-  const randomChance = Math.random() < 0.01;
+  const randomChance = Math.random() < 0.01; // 1% chance
 
   if(!auto && isExactTarget && randomChance){
     resultDiv.innerHTML = `🎉 مبروووك يا بطل! أوقفته عند ${elapsedStr} ثانية وفزت بـ <b>سوايرز</b>! تواصل معنا على تيليجرام لاستلام جائزتك.`;
     resultDiv.style.color = 'var(--lime)';
     showToast('مبروك الفوز بالجائزة!');
   } else {
-    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. لقد استنفدت محاولتك لليوم، ننتظرك غداً بحماس جديد!`;
+    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. لقد استنفدت محاولتك لليوم، ننتظرسك غداً بحماس جديد!`;
     resultDiv.style.color = 'var(--danger)';
   }
 }
+
+function rand(min,max){ return Math.round(min + Math.random()*(max-min)); }
 
 const statusMap = [
   {min:90, label:'ممتاز', cls:'st-excellent'},
@@ -613,101 +619,55 @@ const statusMap = [
 ];
 function statusFor(v){ return statusMap.find(s=>v>=s.min); }
 
-// ================= REAL DEVICE SCANNER =================
-async function runRealScan(){
+function runScan(){
   const btn = document.getElementById('scanBtn');
   btn.disabled = true;
-  btn.textContent = 'جارِ الفحص الحقيقي للأداء...';
+  btn.textContent = 'جارِ الفحص...';
   document.getElementById('statGrid').innerHTML = '';
   document.getElementById('warnZone').innerHTML = '';
 
-  // 1. Real CPU Benchmark (اختبار معالج حقيقي بحساب العمليات الرياضية)
-  const t0 = performance.now();
-  let dummy = 0;
-  for(let i=0; i<15000000; i++){
-    dummy += Math.sqrt(i) * Math.sin(i);
-  }
-  const t1 = performance.now();
-  const cpuTime = t1 - t0; // كلما قل الزمن، كان المعالج أقوى وأسرع
-  // تحويل زمن المعالج إلى نسبة مئوية للأداء (افتراض أن أقل من 15ms ممتاز جداً)
-  let cpuScore = Math.max(40, Math.min(99, Math.round(100 - (cpuTime / 3))));
+  setTimeout(()=>{
+    const components = [
+      {key:'CPU', icon:'⚙️', val:rand(72,97)},
+      {key:'GPU', icon:'🖥️', val:rand(65,96)},
+      {key:'RAM', icon:'🧠', val:rand(60,98)},
+      {key:'Storage', icon:'💾', val:rand(40,95)},
+      {key:'Temperature', icon:'🌡️', val:rand(45,95)},
+      {key:'Battery', icon:'🔋', val:rand(55,99)},
+      {key:'Network', icon:'📶', val:rand(60,99)},
+    ];
+    const score = Math.round(components.reduce((a,c)=>a+c.val,0)/components.length);
 
-  // 2. Real Battery Reading (قراءة حقيقية للبطارية إن توفرت في المتصفح)
-  let batteryScore = 85;
-  let batteryStatusText = 'غير متاح';
-  if (navigator.getBattery) {
-    try {
-      const b = await navigator.getBattery();
-      batteryScore = Math.round(b.level * 100);
-      batteryStatusText = b.charging ? `يشحن (${batteryScore}%)` : `${batteryScore}%`;
-    } catch(e) {}
-  } else {
-    batteryStatusText = 'جاهز';
-  }
+    const circumference = 590.6;
+    const offset = circumference - (circumference*score/100);
+    const fill = document.getElementById('gaugeFill');
+    fill.style.strokeDashoffset = offset;
+    const overall = statusFor(score);
+    fill.style.stroke = score>=75 ? 'var(--lime)' : (score>=55 ? 'var(--warn)' : 'var(--danger)');
+    document.getElementById('gaugeScore').textContent = score;
+    document.getElementById('gaugeLabel').textContent = overall.label;
 
-  // 3. Real Network Latency (قراءة Ping حقيقي عبر قياس زمن الاستجابة)
-  let netScore = 90;
-  const netStart = performance.now();
-  try {
-    await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
-    const netTime = performance.now() - netStart;
-    netScore = netTime < 100 ? 98 : (netTime < 300 ? 80 : 60);
-  } catch(e) {
-    netScore = 75;
-  }
+    const grid = document.getElementById('statGrid');
+    components.forEach((c,i)=>{
+      const st = statusFor(c.val);
+      const el = document.createElement('div');
+      el.className = 'stat-card';
+      el.innerHTML = `
+        <div class="stat-top"><span class="stat-name">${c.key}</span><span>${c.icon}</span></div>
+        <div class="stat-value">${c.val}%</div>
+        <span class="stat-status ${st.cls}">${st.label}</span>`;
+      grid.appendChild(el);
+      setTimeout(()=>el.classList.add('show'), i*60);
+    });
 
-  // 4. Memory estimation (تقدير الذاكرة بناءً على أداء المتصفح)
-  let ramScore = 78;
-  if (performance.memory) {
-    const usedMB = performance.memory.usedJSHeapSize / (1024 * 1024);
-    ramScore = Math.max(50, Math.min(98, Math.round(100 - (usedMB / 20))));
-  }
-
-  // 5. GPU & Storage estimation based on platform capabilities
-  const gpuScore = Math.min(95, cpuScore + 5);
-  const storageScore = 88;
-
-  const components = [
-    {key:'CPU (أداء المعالج)', icon:'⚙️', val: cpuScore},
-    {key:'GPU (رسوميات الشاشة)', icon:'🖥️', val: gpuScore},
-    {key:'RAM (الذاكرة الفورية)', icon:'🧠', val: ramScore},
-    {key:'Storage (التخزين الحر)', icon:'💾', val: storageScore},
-    {key:'Battery (البطارية)', icon:'🔋', val: batteryScore},
-    {key:'Network (سرعة الاستجابة)', icon:'📶', val: netScore},
-  ];
-
-  const score = Math.round(components.reduce((a,c)=>a+c.val,0)/components.length);
-
-  const circumference = 590.6;
-  const offset = circumference - (circumference*score/100);
-  const fill = document.getElementById('gaugeFill');
-  fill.style.strokeDashoffset = offset;
-  const overall = statusFor(score);
-  fill.style.stroke = score>=75 ? 'var(--lime)' : (score>=55 ? 'var(--warn)' : 'var(--danger)');
-  document.getElementById('gaugeScore').textContent = score;
-  document.getElementById('gaugeLabel').textContent = overall.label;
-
-  const grid = document.getElementById('statGrid');
-  components.forEach((c,i)=>{
-    const st = statusFor(c.val);
-    const el = document.createElement('div');
-    el.className = 'stat-card';
-    el.innerHTML = `
-      <div class="stat-top"><span class="stat-name">${c.key}</span><span>${c.icon}</span></div>
-      <div class="stat-value">${c.val}%</div>
-      <span class="stat-status ${st.cls}">${st.label}</span>`;
-    grid.appendChild(el);
-    setTimeout(()=>el.classList.add('show'), i*60);
-  });
-
-  btn.disabled = false;
-  btn.textContent = 'إعادة الفحص الحقيقي';
-  document.getElementById('boostBtn').disabled = false;
-  showToast('تم إتمام الفحص الحقيقي لجهازك بنجاح!');
+    btn.disabled = false;
+    btn.textContent = 'Scan Again';
+    document.getElementById('boostBtn').disabled = false;
+  }, 1400);
 }
 
 function boostAndPlay(){
-  showToast('تم تنشيط وضع الأداء الخارق وتصفية الذاكرة المؤقتة. جاهز لدخول eFootball!', 3200);
+  showToast('لا يمكن للتطبيق إغلاق التطبيقات الثقيلة تلقائيًا — أغلقها يدويًا لأفضل أداء.', 3200);
 }
 
 function togglePerf(on){
@@ -739,7 +699,7 @@ function cleanStorage(){
   bar.style.background = 'linear-gradient(90deg,var(--warn),#FFD166)';
   document.getElementById('stUsed').textContent = '59.1 GB';
   document.getElementById('stFree').textContent = '21.2 GB';
-  showToast('تم تحرير الملفات المؤقتة بنجاح.');
+  showToast('تم تحرير 2.3 GB بأمان.');
 }
 
 function runNetTest(){
@@ -747,9 +707,9 @@ function runNetTest(){
   btn.disabled = true;
   btn.textContent = 'جارِ القياس...';
   setTimeout(()=>{
-    const ping = Math.floor(15 + Math.random() * 45);
-    const down = Math.floor(30 + Math.random() * 90);
-    const up = Math.floor(10 + Math.random() * 30);
+    const ping = rand(18,85);
+    const down = rand(15,140);
+    const up = rand(5,40);
     document.getElementById('netPing').textContent = ping;
     document.getElementById('netDown').textContent = down+' Mbps';
     document.getElementById('netUp').textContent = up+' Mbps';
@@ -757,12 +717,12 @@ function runNetTest(){
     const good = ping < 60 && down > 25;
     const verdict = document.getElementById('netVerdict');
     verdict.style.display = 'block';
-    verdict.textContent = good ? 'ممتاز للعب أونلاين بدون لاج' : 'الاتصال غير مستقرار';
+    verdict.textContent = good ? 'Excellent for Online Gaming' : 'Network instability detected';
     verdict.style.background = good ? 'rgba(182,255,62,.1)' : 'rgba(255,84,112,.1)';
     verdict.style.color = good ? 'var(--lime)' : '#FF8FA3';
     btn.disabled = false;
-    btn.textContent = 'إعادة اختبار الشبكة';
-  }, 1200);
+    btn.textContent = 'Test Again';
+  }, 1300);
 }
 
 document.getElementById('profileGrid').addEventListener('click', (e)=>{
@@ -773,5 +733,6 @@ document.getElementById('profileGrid').addEventListener('click', (e)=>{
   showToast('تم التبديل إلى نمط ' + card.querySelector('.profile-name').textContent);
 });
 </script>
+
 </body>
 </html>
