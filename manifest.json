@@ -1,0 +1,14 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Max pes",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Max pes",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "Com.max.gameperformance",
+  "description": "‏تطبيق لتحسين أداء لعبة بيس ‏موبايل تطبيق كابتن ماكس",
+  "lang": "ar"
+}
