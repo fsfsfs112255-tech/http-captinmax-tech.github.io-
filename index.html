@@ -312,16 +312,16 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 2: AI CHATBOT ASSISTANT ================= -->
+  <!-- ================= PAGE 2: AI CHATBOT ASSISTANT (GEMINI CONNECTED) ================= -->
   <div id="page-ai" class="page-section">
     <section>
       <h2 class="section-title display">🤖 المدرب الذكي لـ eFootball</h2>
-      <p class="section-desc">تحدث مباشرة مع المدرب الذكي واسأله عن أمور الدفاع، الهجوم، الخطط، وكيفية تطوير فريقك.</p>
+      <p class="section-desc">تحدث مباشرة مع المدرب الذكي المدعوم بالذكاء الاصطناعي واسأله عن الدفاع، الهجوم، والتكتيك.</p>
 
       <div class="panel chat-container">
         <div id="chatMessages" class="chat-messages">
           <div class="chat-msg ai">
-            أهلاً بك يا بطل! أنا مدربك الذكي الخاص بـ eFootball Mobile. اسألني عن أفضل خطة، كيفية التصدي للدفاعات المتقدمة، طرق الاستحواذ، أو أي استفسار تكتيكي وسأجيبك فوراً! 🎮⚽
+            أهلاً بك يا بطل! أنا مدربك الذكي المتصل بالذكاء الاصطناعي الخاص بـ eFootball Mobile. اسألني عن أي خطة أو طريقة دفاع وسأجيبك فوراً! 🎮⚽
           </div>
         </div>
 
@@ -564,8 +564,8 @@ function showToast(msg, ms=2200){
   t._timer = setTimeout(()=>t.classList.remove('show'), ms);
 }
 
-// AI CHATBOT INTERACTIVE LOGIC
-function sendAIChatMessage() {
+// REAL AI CHATBOT CONNECTION (GEMINI API)
+async function sendAIChatMessage() {
   const input = document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatMessages');
   const userText = input.value.trim();
@@ -577,30 +577,39 @@ function sendAIChatMessage() {
   input.value = '';
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  // رسالة جاري التفكير
+  // رسالة الانتظار والاتصال بالذكاء الاصطناعي
   const loadingId = 'loading_' + Date.now();
-  chatMessages.innerHTML += `<div id="${loadingId}" class="chat-msg ai" style="color:var(--text-dim);">⏳ جارِ تحليل السؤال وصياغة النصيحة التكتيكية...</div>`;
+  chatMessages.innerHTML += `<div id="${loadingId}" class="chat-msg ai" style="color:var(--text-dim);">⏳ المدرب الذكي يحلل سؤالك...</div>`;
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  setTimeout(() => {
-    document.getElementById(loadingId).remove();
+  try {
+    // تم إضافة المفتاح الخاص بك هنا بنجاح
     
-    let aiReply = "أنصحك بالتركيز على التوازن بين الدفاع والهجوم، واستخدام أسلوب LBC مع خطة 4-2-2-2 لضمان أفضل نتائج في المباريات أونلاين.";
-    const textLower = userText.toLowerCase();
 
-    if(textLower.includes('دفاع') || textLower.includes('ثغرات') || textLower.includes('دفاعي') || textLower.includes('هدف')) {
-      aiReply = "🛡️ **نصيحة دفاعية:** لا تضغط أبداً بزر الضغط المباشر (Press) بعنف. استخدم زر **Match-Up** لغلق زوايا التمرير، واجعل لاعبي الارتكاز (DMF) يساندون خط الدفاع باستمرار دون تحريك قلبي الدفاع يدوياً لتفادي فتح ثغرات للخصم.";
-    } else if(textLower.includes('هجوم') || textLower.includes('تسجيل') || textLower.includes('هجومي') || textLower.includes('مهاجم')) {
-      aiReply = "⚡ **نصيحة هجومية:** استخدم التمريرات القصيرة (One-Two) لسحب مدافعي الخصم، واعتمد على سرعة الأجنحة بمهارة (Sharp Touch) لفتح زاوية عرضية دقيقة نحو رأس الحربة.";
-    } else if(textLower.includes('خطة') || textLower.includes('التشكيلة') || textLower.includes('مدرب') || textLower.includes('أفضل')) {
-      aiReply = "⭐ **أفضل خطة حالياً (Meta):** خطة **4-2-2-2** مع مدرب يعتمد أسلوب **Long Ball Counter** تعتبر هي الأقوى لأنها تمنحك صلبة دفاعية وهجمات مرتدة خاطفة وسريعة جداً.";
-    } else if(textLower.includes('شبكة') || textLower.includes('بينغ') || textLower.includes('تقطيع') || textLower.includes('لاج')) {
-      aiReply = "📶 **نصيحة للشبكة:** تأكد من إيقاف التنزيلات في الخلفية، وفحص الـ Ping عبر قسم (الشبكة والتخزين) في التطبيق، ويفضل دائماً اللعب على اتصال واي فاي مستقر أو بيانات قوية لتفادي الـ Lag.";
-    }
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: `أنت مساعد ذكاء اصطناعي وخبير محترف جداً في لعبة eFootball Mobile. أجب على هذا السؤال باختصار وبشكل تكتيكي مفيد وباللغة العربية: ${userText}`
+          }]
+        }]
+      })
+    });
 
+    const data = await response.json();
+    document.getElementById(loadingId).remove();
+
+    const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "عذراً، لم أستطع معالجة الإجابة، يرجى المحاولة مرة أخرى.";
+    
     chatMessages.innerHTML += `<div class="chat-msg ai">${aiReply}</div>`;
     chatMessages.scrollTop = chatMessages.scrollHeight;
-  }, 1100);
+
+  } catch (error) {
+    document.getElementById(loadingId).remove();
+    chatMessages.innerHTML += `<div class="chat-msg ai" style="color:var(--danger);">⚠️ عذراً، حدث خطأ في الاتصال بالإنترنت أو المفتاح.</div>`;
+  }
 }
 
 // GIVEAWAY TIMER LOGIC WITH 24-HOUR COOLDOWN
@@ -685,7 +694,7 @@ function stopGiveawayTimer(auto=false){
     resultDiv.style.color = 'var(--lime)';
     showToast('مبروك الفوز بالجائزة!');
   } else {
-    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. لقد استنفدت محاولتك لليوم، ننتظرك غداً بحماس جديد!`;
+    resultDiv.innerHTML = `❌ وقفت العداد عند <b>${elapsedStr} ثانية</b>. لقد استنفدت محاولتك لليوم، ننتظرس غداً بحماس جديد!`;
     resultDiv.style.color = 'var(--danger)';
   }
 }
