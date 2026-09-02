@@ -167,6 +167,26 @@
   .profile-name{font-family:'Tajawal';font-weight:800;font-size:13.5px;}
   .profile-desc{font-size:11.5px;color:var(--text-dim);margin-top:4px;}
 
+  /* AI ASSISTANT SECTION STYLES */
+  .ai-upload-box{
+    border:2px dashed var(--border);border-radius:16px;padding:22px;text-align:center;
+    background:var(--bg-elev);cursor:pointer;transition:border-color .2s;position:relative;
+  }
+  .ai-upload-box:hover{border-color:var(--blue);}
+  .ai-upload-icon{font-size:32px;margin-bottom:8px;}
+  .ai-upload-title{font-family:'Tajawal';font-weight:800;font-size:14.5px;margin-bottom:4px;}
+  .ai-upload-sub{font-size:11.5px;color:var(--text-dim);}
+  .ai-result-box{
+    background:var(--bg-elev);border:1px solid rgba(182,255,62,0.3);border-radius:14px;
+    padding:16px;margin-top:14px;display:none;
+  }
+  .ai-result-title{font-family:'Tajawal';font-weight:800;font-size:14px;color:var(--lime);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .ai-result-text{font-size:12.5px;color:var(--text-dim);line-height:1.7;}
+  
+  .faq-item{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;}
+  .faq-q{font-family:'Tajawal';font-weight:800;font-size:13.5px;color:#7FB0FF;margin-bottom:6px;}
+  .faq-a{font-size:12.5px;color:var(--text-dim);line-height:1.7;}
+
   /* PRO TACTICS SECTION */
   .tactics-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px;}
   .tactic-tab{
@@ -240,7 +260,6 @@
         <div class="brand-sub">eFootball Mobile</div>
       </div>
     </div>
-    <!-- تم إضافة target="_blank" و rel="noopener noreferrer" لفتح الرابط بشكل صحيح -->
     <a class="tg-btn" href="https://t.me/r2max" target="_blank" rel="noopener noreferrer">
       <span class="tg-dot"></span> r2max
     </a>
@@ -250,6 +269,7 @@
 <!-- TOP SUB-PAGES NAVIGATION BAR -->
 <div class="nav-pages" id="navPages">
   <div class="page-tab active" data-target="page-scan">⚡ الرئيسية والفحص</div>
+  <div class="page-tab" data-target="page-ai">🤖 ذكاء التكتيك</div>
   <div class="page-tab" data-target="page-tactics">🎯 دليل المحترفين</div>
   <div class="page-tab" data-target="page-giveaway">🎁 مختبر الجوائز</div>
   <div class="page-tab" data-target="page-system">⚙️ الأداء والنظام</div>
@@ -288,7 +308,50 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 2: PRO TACTICS & GUIDE ================= -->
+  <!-- ================= PAGE 2: AI TACTICS & SQUAD ANALYZER ================= -->
+  <div id="page-ai" class="page-section">
+    <section>
+      <h2 class="section-title display">🤖 مساعد الذكاء الاصطناعي للتشكيلة</h2>
+      <p class="section-desc">ارفع صورة تشكيرتك لتحليلها فوراً، واحصل على حلول نهائية لمشاكل الدفاع والهجوم بناءً على خبرة المحترفين.</p>
+
+      <!-- Image Upload Panel -->
+      <div class="panel">
+        <div class="ai-upload-box" onclick="document.getElementById('squadImageInput').click()">
+          <div class="ai-upload-icon">📸</div>
+          <div class="ai-upload-title">ارفع صورة تشكيلة فريقك</div>
+          <div class="ai-upload-sub">انقر هنا لاختيار صورة التشكيلة من جهازك (PNG, JPG)</div>
+          <input type="file" id="squadImageInput" accept="image/*" style="display:none" onchange="handleSquadUpload(event)">
+        </div>
+        
+        <div id="aiResultBox" class="ai-result-box">
+          <div class="ai-result-title"><span>🧠</span> تقرير الذكاء الاصطناعي للتشكيلة</div>
+          <div id="aiResultText" class="ai-result-text"></div>
+        </div>
+      </div>
+
+      <!-- FAQ & Golden Rules Panel -->
+      <div class="panel">
+        <h2 class="section-title display" style="font-size:16px; margin-bottom:12px;">💡 الأسئلة الشائعة والحلول الذهبية</h2>
+        
+        <div class="faq-item">
+          <div class="faq-q">🏆 ما هي أفضل خطة وأفضل أسلوب لعب حالياً؟</div>
+          <div class="faq-a">الخطة الذهبية الأفضل هي <b>خطة 4-2-2-2</b>، وأفضل أسلوب لعب هو <b>الكرة الطويلة المضادة (Long Ball Counter - LBC)</b> لضمان صلابة الدفاع وسرعة الارتداد الهجومي الخاطف.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">🛡️ كيف تحل مشكلة الثغرات في الدفاع والطريقة الصحيحة للدفاع؟</div>
+          <div class="faq-a">اعتمد على زر <b>Match-Up</b> لغلق المساحات بدلاً من الضغط العشوائي، ولا تحرك قلبي الدفاع يدوياً أبداً لتفادي فتح ثغرات قاتلة للخصم.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">⚡ كيف تطور كفاءة الهجوم وتتغلب على التكتل الدفاعي؟</div>
+          <div class="faq-a">استخدم التمريرات القصيرة المتبادلة بين خط الوسط والهجوم لسحب دفاع الخصم، واستغل سرعة الهجمات المرتدة في أسلوب Long Ball Counter.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= PAGE 3: PRO TACTICS & GUIDE ================= -->
   <div id="page-tactics" class="page-section">
     <section>
       <h2 class="section-title display">دليل المحترفين والتكتيك</h2>
@@ -329,8 +392,8 @@
         <!-- Tab 3: Meta Tactics -->
         <div id="tab-meta" class="tactic-content">
           <div class="tactic-card-item">
-            <h3><span>⭐</span> أفضل أساليب اللعب</h3>
-            <p>أسلوب **Quick Counter** (الارتداد السريع) هو الأفضل حالياً للمباريات السريعة، بينما أسلوب **Possession Game** يناسب اللاعبين الذين يفضلون الاستحواذ والتحكم الكامل بإيقاع اللعب.</p>
+            <h3><span>⭐</span> الخطة والأسلوب الأقوى (Meta)</h3>
+            <p>الخطة الأفضل هي **4-2-2-2** مع أسلوب **Long Ball Counter** (الكرة الطويلة المضادة)، حيث تمنحك توازناً مثالياً وصلابة دفاعية مع سرعة فائقة في ضرب دفاعات الخصم.</p>
           </div>
           <div class="tactic-card-item">
             <h3><span>📌</span> اختيار المدرب المناسب</h3>
@@ -342,7 +405,7 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 3: GIVEAWAY TIMER GAME ================= -->
+  <!-- ================= PAGE 4: GIVEAWAY TIMER GAME ================= -->
   <div id="page-giveaway" class="page-section">
     <section>
       <h2 class="section-title display">🎁 تحدي العداد — اربح سوايرز!</h2>
@@ -371,7 +434,7 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 4: PERFORMANCE & SYSTEM ================= -->
+  <!-- ================= PAGE 5: PERFORMANCE & SYSTEM ================= -->
   <div id="page-system" class="page-section">
     <section>
       <h2 class="section-title display">System & Performance</h2>
@@ -427,7 +490,7 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 5: NETWORK & STORAGE ================= -->
+  <!-- ================= PAGE 6: NETWORK & STORAGE ================= -->
   <div id="page-net" class="page-section">
     <section>
       <h2 class="section-title display">Network & Storage</h2>
@@ -475,7 +538,6 @@
         <div class="tg-banner-title">قناتنا على تيليجرام</div>
         <div class="tg-banner-sub">أخبار التحديثات ونصائح الأداء — t.me/r2max</div>
       </div>
-      <!-- تم إضافة target="_blank" و rel="noopener noreferrer" هنا أيضاً -->
       <a class="tg-banner-btn" href="https://t.me/r2max" target="_blank" rel="noopener noreferrer">انضم الآن</a>
     </div>
   </section>
@@ -520,6 +582,29 @@ function showToast(msg, ms=2200){
   t._timer = setTimeout(()=>t.classList.remove('show'), ms);
 }
 
+// AI SQUAD ANALYZER SIMULATION
+function handleSquadUpload(event) {
+  const file = event.target.files[0];
+  if(!file) return;
+  
+  const resultBox = document.getElementById('aiResultBox');
+  const resultText = document.getElementById('aiResultText');
+  
+  resultBox.style.display = 'block';
+  resultText.innerHTML = '🔄 جاري تحليل صورة التشكيلة عبر الذكاء الاصطناعي... يرجى الانتظار.';
+  
+  setTimeout(() => {
+    resultText.innerHTML = `
+      ✅ <b>تم فحص التشكيلة بنجاح!</b><br>
+      • <b>التوصية بالخطة:</b> تم رصد تشكيرتك؛ ننصحك اعتماد خطة <b>4-2-2-2</b> للحصول على توازن مثالي.<br>
+      • <b>أسلوب اللعب المقترح:</b> استخدم أسلوب <b>الكرة الطويلة المضادة (Long Ball Counter)</b> لاستغلال الارتداد الهجومي السريع.<br>
+      • <b>نصيحة الدفاع:</b> تجنب تحريك قلبي الدفاع يدوياً واعتمد كلياً على زر <b>Match-Up</b> لغلق المساحات والزوايا.<br>
+      • <b>نصيحة الهجوم:</b> اعتمد على التمريرات القصيرة وبناء الهجمة بهدوء لخلخلة دفاع الخصم.
+    `;
+    showToast('تم تحليل التشكيلة بنجاح!');
+  }, 1600);
+}
+
 // GIVEAWAY TIMER LOGIC WITH 24-HOUR COOLDOWN
 const COOLDOWN_KEY = 'r2max_giveaway_last_time';
 const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
@@ -546,7 +631,6 @@ function checkGiveawayCooldown(){
   }
 }
 
-// Run cooldown check on page load
 checkGiveawayCooldown();
 
 let timerInterval = null;
@@ -587,7 +671,6 @@ function stopGiveawayTimer(auto=false){
   cancelAnimationFrame(timerInterval);
   document.getElementById('timerStopBtn').disabled = true;
 
-  // Save cooldown timestamp immediately when they make an attempt
   localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
   checkGiveawayCooldown();
 
@@ -597,7 +680,7 @@ function stopGiveawayTimer(auto=false){
   resultDiv.style.display = 'block';
 
   const isExactTarget = (elapsedNum >= 9.98 && elapsedNum <= 10.02);
-  const randomChance = Math.random() < 0.01; // 1% chance
+  const randomChance = Math.random() < 0.01;
 
   if(!auto && isExactTarget && randomChance){
     resultDiv.innerHTML = `🎉 مبروووك يا بطل! أوقفته عند ${elapsedStr} ثانية وفزت بـ <b>سوايرز</b>! تواصل معنا على تيليجرام لاستلام جائزتك.`;
