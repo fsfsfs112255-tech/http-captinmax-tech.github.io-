@@ -1047,5 +1047,13 @@ document.getElementById('profileGrid').addEventListener('click', (e)=>{
 loadStorageAndMemoryPanel();
 </script>
 
+// Keep the JS heap reading live while the user is on that page
+setInterval(()=>{
+  if(document.getElementById('page-net').classList.contains('active')){
+    loadHeapPanel();
+  }
+}, 3000);
+</script>
+
 </body>
 </html>
