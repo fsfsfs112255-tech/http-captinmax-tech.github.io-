@@ -6,7 +6,7 @@
 <title>Gaming Performance Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#07090E;
@@ -205,10 +205,10 @@
     font-family:'Tajawal', sans-serif;
   }
 
-  .coach-subtabs{display:grid;grid-template-columns:repeat(5, 1fr);gap:2px;margin-bottom:12px;background:var(--bg-elev);padding:4px;border-radius:14px;border:1px solid var(--border);}
+  .coach-subtabs{display:grid;grid-template-columns:repeat(4, 1fr);gap:3px;margin-bottom:12px;background:var(--bg-elev);padding:4px;border-radius:14px;border:1px solid var(--border);}
   .coach-subtab{
     background:transparent;border:none;color:var(--text-dim);font-family:'Tajawal';
-    font-weight:800;font-size:9px;padding:7px 1px;border-radius:8px;cursor:pointer;text-align:center;
+    font-weight:800;font-size:9.5px;padding:7px 1px;border-radius:8px;cursor:pointer;text-align:center;
     white-space:nowrap;
   }
   .coach-subtab.active{
@@ -457,7 +457,7 @@
 <!-- NAVIGATION BAR -->
 <div class="nav-pages" id="navPages">
   <div class="page-tab active" data-target="page-scan">⚡ الرئيسية والفحص</div>
-  <div class="page-tab" data-target="page-packs">🎲 زيد حظك</div>
+  <div class="page-tab" data-target="page-luck">🎲 زيادة الحظ</div>
   <div class="page-tab" data-target="page-ai">🤖 المدرب الذكي والتشكيلة</div>
   <div class="page-tab" data-target="page-giveaway">🎁 مختبر الجوائز</div>
   <div class="page-tab" data-target="page-system">⚙ الأداء والنظام</div>
@@ -495,103 +495,93 @@
     </section>
   </div>
 
-  <!-- ================= PAGE 2: PACKS / ZEYED HAZAK (NEW SECTION) ================= -->
-  <div id="page-packs" class="page-section">
+  <!-- ================= PAGE 2: INCREASE LUCK (NEW SECTION) ================= -->
+  <div id="page-luck" class="page-section">
     <section>
-      <!-- Header -->
-      <div class="text-center py-4">
+      <div class="text-center py-2 mb-2">
         <div class="inline-block bg-amber-500/10 text-amber-400 text-xs font-bold px-3.5 py-1 rounded-full mb-2 border border-amber-500/30">
           🎲 أداة فحص وحرق الباكات الرسمية
         </div>
-        <h2 class="text-4xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500" style="text-shadow: 0 0 25px rgba(234, 179, 8, 0.4); font-family:'Cairo', sans-serif;">
+        <h2 class="section-title display text-2xl text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500">
           زيد حظك ٪
         </h2>
         <p class="text-slate-400 text-xs mt-1">eFootball · Cptn Edition</p>
       </div>
 
-      <!-- Main Content Container -->
-      <div class="w-full space-y-4 my-auto" style="font-family:'Cairo', sans-serif;">
-        
-        <!-- Banner Notification -->
-        <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="rounded-2xl p-4 flex items-center gap-3 border-l-4 border-l-amber-500 shadow-xl">
-            <span class="text-2xl animate-bounce">🔥</span>
-            <div>
-                <h3 class="font-bold text-xs text-amber-400">تحديث خوارزميات الحظ</h3>
-                <p class="text-[11px] text-slate-300">اختر الباك المناسب وافحص نسبة حظ جهازك الآن بدقة عالية.</p>
+      <!-- Banner Notification -->
+      <div class="panel flex items-center gap-3 border-l-4 border-l-amber-500 shadow-xl mb-4">
+        <span class="text-2xl animate-bounce">🔥</span>
+        <div>
+          <h3 class="font-bold text-xs text-amber-400">تحديث خوارزميات الحظ</h3>
+          <p class="text-[11px] text-slate-300">اختر الباك المناسب وافحص نسبة حظ جهازك الآن بدقة عالية.</p>
+        </div>
+      </div>
+
+      <!-- Pack Section -->
+      <div class="space-y-4 mb-4">
+        <!-- Pack 1 -->
+        <div onclick="playSound('click'); checkSubscriptionAndRun('Epic: English League Guardians')" class="panel cursor-pointer hover:border-amber-500/60 transition duration-300 transform active:scale-95 shadow-2xl relative overflow-hidden group">
+          <div class="absolute top-3 right-3 z-10 bg-gradient-to-r from-amber-600 to-yellow-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+            ✨ ينتهي قريباً
+          </div>
+          <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 relative group-hover:scale-[1.02] transition duration-300">
+            <img src="https://i.ibb.co/Zp6ywXjk/image.png" alt="English League Guardians" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-4">
+              <h4 class="font-black text-base text-white">Epic: English League Guardians</h4>
+              <div class="flex gap-2 mt-1 text-[11px] text-slate-300">
+                <span class="bg-black/50 backdrop-blur px-2 py-0.5 rounded-md">فتحة: 900</span>
+                <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-bold">١٠ فتحات: 100</span>
+              </div>
             </div>
+          </div>
+          <div class="mt-3 text-center bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center justify-center gap-2">
+            <span>🎯</span> افحص حظ هذا الباك الآن
+          </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- قسم الباكات (صور كبيرة وواضحة) -->
-        <!-- ========================================== -->
-        <div class="space-y-4">
-            
-            <!-- الباك الأول -->
-            <div onclick="playSound('click'); checkSubscriptionAndRun('Epic: English League Guardians')" style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="rounded-3xl p-3 cursor-pointer hover:border-amber-500/60 transition duration-300 transform active:scale-95 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-3 right-3 z-10 bg-gradient-to-r from-amber-600 to-yellow-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
-                    ✨ ينتهي قريباً
-                </div>
-                <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 relative group-hover:scale-[1.02] transition duration-300">
-                    <img src="https://i.ibb.co/Zp6ywXjk/image.png" alt="English League Guardians" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-4">
-                        <h4 class="font-black text-base text-white">Epic: English League Guardians</h4>
-                        <div class="flex gap-2 mt-1 text-[11px] text-slate-300">
-                            <span class="bg-black/50 backdrop-blur px-2 py-0.5 rounded-md">فتحة: 900</span>
-                            <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-bold">١٠ فتحات: 100</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 text-center bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center justify-center gap-2">
-                    <span>🎯</span> افحص حظ هذا الباك الآن
-                </div>
+        <!-- Pack 2 -->
+        <div onclick="playSound('click'); checkSubscriptionAndRun('Epic: Snap Strike')" class="panel cursor-pointer hover:border-amber-500/60 transition duration-300 transform active:scale-95 shadow-2xl relative overflow-hidden group">
+          <div class="absolute top-3 right-3 z-10 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+            ⏰ ينتهي اليوم
+          </div>
+          <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 relative group-hover:scale-[1.02] transition duration-300">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" alt="Snap Strike" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-4">
+              <h4 class="font-black text-base text-white">Epic: Snap Strike</h4>
+              <div class="flex gap-2 mt-1 text-[11px] text-slate-300">
+                <span class="bg-black/50 backdrop-blur px-2 py-0.5 rounded-md">فتحة: 100</span>
+                <span class="bg-red-500/20 text-red-300 px-2 py-0.5 rounded-md font-bold">١٠ فتحات: 900</span>
+              </div>
             </div>
-
-            <!-- الباك الثاني -->
-            <div onclick="playSound('click'); checkSubscriptionAndRun('Epic: Snap Strike')" style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="rounded-3xl p-3 cursor-pointer hover:border-amber-500/60 transition duration-300 transform active:scale-95 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-3 right-3 z-10 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
-                    ⏰ ينتهي اليوم
-                </div>
-                <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 relative group-hover:scale-[1.02] transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" alt="Snap Strike" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-4">
-                        <h4 class="font-black text-base text-white">Epic: Snap Strike</h4>
-                        <div class="flex gap-2 mt-1 text-[11px] text-slate-300">
-                            <span class="bg-black/50 backdrop-blur px-2 py-0.5 rounded-md">فتحة: 100</span>
-                            <span class="bg-red-500/20 text-red-300 px-2 py-0.5 rounded-md font-bold">١٠ فتحات: 900</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 text-center bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center justify-center gap-2">
-                    <span>🎯</span> افحص حظ هذا الباك الآن
-                </div>
-            </div>
-
+          </div>
+          <div class="mt-3 text-center bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center justify-center gap-2">
+            <span>🎯</span> افحص حظ هذا الباك الآن
+          </div>
         </div>
-        <!-- نهاية قسم الباكات -->
+      </div>
 
-        <!-- Times Section -->
-        <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="rounded-2xl p-4">
-            <h3 class="font-bold text-xs text-slate-200 mb-3 flex items-center gap-2">
-                <span>⏰</span> أوقات تفتح بها البكجات المثالية
-            </h3>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
-                    <span class="text-slate-400 block text-[10px]">الصبح</span>
-                    <strong class="text-amber-400 text-xs font-bold">8:45 ص</strong>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
-                    <span class="text-slate-400 block text-[10px]">العصر</span>
-                    <strong class="text-amber-400 text-xs font-bold">1:30 م</strong>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
-                    <span class="text-slate-400 block text-[10px]">بالليل</span>
-                    <strong class="text-amber-400 text-xs font-bold">11:06 م</strong>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
-                    <span class="text-slate-400 block text-[10px]">الفجر</span>
-                    <strong class="text-amber-400 text-xs font-bold">3:00 ص</strong>
-                </div>
-            </div>
+      <!-- Times Section -->
+      <div class="panel">
+        <h3 class="font-bold text-xs text-slate-200 mb-3 flex items-center gap-2">
+          <span>⏰</span> أوقات تفتح بها البكجات المثالية
+        </h3>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">الصبح</span>
+            <strong class="text-amber-400 text-xs font-bold">8:45 ص</strong>
+          </div>
+          <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">العصر</span>
+            <strong class="text-amber-400 text-xs font-bold">1:30 م</strong>
+          </div>
+          <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">بالليل</span>
+            <strong class="text-amber-400 text-xs font-bold">11:06 م</strong>
+          </div>
+          <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">الفجر</span>
+            <strong class="text-amber-400 text-xs font-bold">3:00 ص</strong>
+          </div>
         </div>
       </div>
     </section>
@@ -607,8 +597,8 @@
       <!-- SUB-TABS FOR AI COACH -->
       <div class="coach-subtabs">
         <button class="coach-subtab active" onclick="switchCoachTab('chat')">💬 الشات والفحص</button>
-        <button class="coach-subtab" onclick="switchCoachTab('defense')">🛡️ الدفاع</button>
-        <button class="coach-subtab" onclick="switchCoachTab('players')">👤 الأسلوب</button>
+        <button class="coach-subtab" onclick="switchCoachTab('defense')">🛡️ دليل الدفاع</button>
+        <button class="coach-subtab" onclick="switchCoachTab('players')">👤 أسلوب اللاعب</button>
         <button class="coach-subtab" onclick="switchCoachTab('animation')">🎬 Animation</button>
       </div>
 
@@ -889,9 +879,11 @@
   <footer>Gaming Performance Center · نظام الصفحات المتعددة · يعمل بدون إنترنت</footer>
 </div>
 
-<!-- Mandatory Telegram Subscription Modal for Packs -->
-<div id="subModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-    <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-sky-500/40 shadow-2xl">
+<div id="toast" class="toast"></div>
+
+<!-- Mandatory Telegram Subscription Modal for Luck Section -->
+<div id="subModal" style="display:none;" class="fixed inset-0 bg-black/90 backdrop-blur-md items-center justify-center p-4 z-50">
+    <div class="panel w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-sky-500/40 shadow-2xl">
         <div class="w-16 h-16 mx-auto rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center text-3xl animate-bounce">
             ✈️
         </div>
@@ -913,8 +905,8 @@
 </div>
 
 <!-- Loading / Analyzing Modal -->
-<div id="loadingModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
-    <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-amber-500/30">
+<div id="loadingModal" style="display:none;" class="fixed inset-0 bg-black/85 backdrop-blur-sm items-center justify-center p-4 z-50">
+    <div class="panel w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-amber-500/30">
         <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl animate-pulse">
             🎲
         </div>
@@ -928,8 +920,8 @@
 </div>
 
 <!-- Result Modal (Random 75% to 90%) -->
-<div id="resultModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-    <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);" class="w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-amber-500/40 shadow-2xl">
+<div id="resultModal" style="display:none;" class="fixed inset-0 bg-black/90 backdrop-blur-md items-center justify-center p-4 z-50">
+    <div class="panel w-full max-w-sm rounded-3xl p-6 text-center space-y-4 border border-amber-500/40 shadow-2xl">
         <div class="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl animate-bounce">
             🏆
         </div>
@@ -950,7 +942,12 @@
     </div>
 </div>
 
-<div id="toast" class="toast"></div>
+<script>
+  // استخدمنا نظام flex بدلاً من hidden المتعارض مع Tailwind CDN لضمان عمل المودال بشكل مثالي
+  document.getElementById('subModal').style.display = 'none';
+  document.getElementById('loadingModal').style.display = 'none';
+  document.getElementById('resultModal').style.display = 'none';
+</script>
 
 <script>
 // NAVIGATION TABS
@@ -1109,6 +1106,136 @@ document.getElementById('quickTopics').addEventListener('click', (e) => {
   if(!chip) return;
   sendAIChatMessage(chip.getAttribute('data-q'));
 });
+
+// LUCK CHECKER & AUDIO LOGIC
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSound(type) {
+    if (!audioCtx) return;
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.exponentialRampToValueAtTime(150, now + 0.05);
+        gainNode.gain.setValueAtTime(0.15, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+    } else if (type === 'success') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.setValueAtTime(500, now + 0.08);
+        osc.frequency.setValueAtTime(700, now + 0.16);
+        gainNode.gain.setValueAtTime(0.2, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.start(now);
+        osc.stop(now + 0.35);
+    }
+}
+
+let selectedPackName = "";
+let pendingPackName = "";
+
+function checkSubscriptionAndRun(packName) {
+    pendingPackName = packName;
+    const isSubscribed = localStorage.getItem('telegram_subscribed_r2max');
+    
+    if (!isSubscribed) {
+        document.getElementById('subModal').style.display = 'flex';
+    } else {
+        startLuckCheck(packName);
+    }
+}
+
+function markSubscribed() {
+    localStorage.setItem('telegram_subscribed_r2max', 'true');
+}
+
+function verifySubscription() {
+    markSubscribed();
+    document.getElementById('subModal').style.display = 'none';
+    if (pendingPackName) {
+        startLuckCheck(pendingPackName);
+    }
+}
+
+function startLuckCheck(packName) {
+    selectedPackName = packName;
+    const modal = document.getElementById('loadingModal');
+    const progressBar = document.getElementById('progressBar');
+    const loadingText = document.getElementById('loadingText');
+    
+    modal.style.display = 'flex';
+    progressBar.style.width = '0%';
+    loadingText.innerText = `جاري فحص حظك في (${packName})...`;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 25;
+        progressBar.style.width = progress + '%';
+        
+        if (progress === 50) {
+            loadingText.innerText = "فحص خوادم اللعبة وأوقات الحظ...";
+        } else if (progress === 75) {
+            loadingText.innerText = "استخراج النسبة النهائية...";
+        }
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                modal.style.display = 'none';
+                playSound('success');
+                showResultModal();
+            }, 400);
+        }
+    }, 250);
+}
+
+function showResultModal() {
+    const resultModal = document.getElementById('resultModal');
+    const resultPercentage = document.getElementById('resultPercentage');
+    const resultMessage = document.getElementById('resultMessage');
+
+    const randomLuck = Math.floor(Math.random() * (90 - 75 + 1)) + 75;
+    resultPercentage.innerText = `حظك اليوم: ${randomLuck}%`;
+    resultMessage.innerText = `🔥 نسبة حظك في باك (${selectedPackName}) هي ${randomLuck}%! الوقت الحالي ممتاز للفتح والحصول على لاعبين أسطوريين.`;
+
+    resultModal.style.display = 'flex';
+}
+
+function closeResultModal() {
+    document.getElementById('resultModal').style.display = 'none';
+}
+
+function openGame() {
+    const gameScheme = "konami-efootball://"; 
+    const playStoreLink = "https://play.google.com/store/apps/details?id=jp.konami.pesam";
+    const appStoreLink = "https://apps.apple.com/app/efootball/id1117270703";
+
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+    window.location.href = gameScheme;
+
+    setTimeout(function () {
+        if (/android/i.test(userAgent)) {
+            window.location.href = playStoreLink;
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.href = appStoreLink;
+        } else {
+            alert("يرجى التأكد من تثبيت لعبة eFootball على هاتفك الذكي.");
+        }
+    }, 1500);
+}
 
 // GIVEAWAY TIMER
 const COOLDOWN_KEY = 'r2max_giveaway_last_time';
@@ -1338,136 +1465,6 @@ async function cleanStorage(){
   }
 }
 loadStorageAndMemoryPanel();
-
-// PACKS & LUCK CHECK AUDIO & LOGIC
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-function playSound(type) {
-    if (!audioCtx) return;
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    const now = audioCtx.currentTime;
-
-    if (type === 'click') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(450, now);
-        osc.frequency.exponentialRampToValueAtTime(150, now + 0.05);
-        gainNode.gain.setValueAtTime(0.15, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-        osc.start(now);
-        osc.stop(now + 0.05);
-    } else if (type === 'success') {
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(300, now);
-        osc.frequency.setValueAtTime(500, now + 0.08);
-        osc.frequency.setValueAtTime(700, now + 0.16);
-        gainNode.gain.setValueAtTime(0.2, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-        osc.start(now);
-        osc.stop(now + 0.35);
-    }
-}
-
-let selectedPackName = "";
-let pendingPackName = "";
-
-function checkSubscriptionAndRun(packName) {
-    pendingPackName = packName;
-    const isSubscribed = localStorage.getItem('telegram_subscribed_r2max');
-    
-    if (!isSubscribed) {
-        document.getElementById('subModal').style.display = 'flex';
-    } else {
-        startLuckCheck(packName);
-    }
-}
-
-function markSubscribed() {
-    localStorage.setItem('telegram_subscribed_r2max', 'true');
-}
-
-function verifySubscription() {
-    markSubscribed();
-    document.getElementById('subModal').style.display = 'none';
-    if (pendingPackName) {
-        startLuckCheck(pendingPackName);
-    }
-}
-
-function startLuckCheck(packName) {
-    selectedPackName = packName;
-    const modal = document.getElementById('loadingModal');
-    const progressBar = document.getElementById('progressBar');
-    const loadingText = document.getElementById('loadingText');
-    
-    modal.style.display = 'flex';
-    progressBar.style.width = '0%';
-    loadingText.innerText = `جاري فحص حظك في (${packName})...`;
-
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += 25;
-        progressBar.style.width = progress + '%';
-        
-        if (progress === 50) {
-            loadingText.innerText = "فحص خوادم اللعبة وأوقات الحظ...";
-        } else if (progress === 75) {
-            loadingText.innerText = "استخراج النسبة النهائية...";
-        }
-
-        if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                modal.style.display = 'none';
-                playSound('success');
-                showResultModal();
-            }, 400);
-        }
-    }, 250);
-}
-
-function showResultModal() {
-    const resultModal = document.getElementById('resultModal');
-    const resultPercentage = document.getElementById('resultPercentage');
-    const resultMessage = document.getElementById('resultMessage');
-
-    const randomLuck = Math.floor(Math.random() * (90 - 75 + 1)) + 75;
-    resultPercentage.innerText = `حظك اليوم: ${randomLuck}%`;
-    resultMessage.innerText = `🔥 نسبة حظك في باك (${selectedPackName}) هي ${randomLuck}%! الوقت الحالي ممتاز للفتح والحصول على لاعبين أسطوريين.`;
-
-    resultModal.style.display = 'flex';
-}
-
-function closeResultModal() {
-    document.getElementById('resultModal').style.display = 'none';
-}
-
-function openGame() {
-    const gameScheme = "konami-efootball://"; 
-    const playStoreLink = "https://play.google.com/store/apps/details?id=jp.konami.pesam";
-    const appStoreLink = "https://apps.apple.com/app/efootball/id1117270703";
-
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    
-    window.location.href = gameScheme;
-
-    setTimeout(function () {
-        if (/android/i.test(userAgent)) {
-            window.location.href = playStoreLink;
-        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            window.location.href = appStoreLink;
-        } else {
-            alert("يرجى التأكد من تثبيت لعبة eFootball على هاتفك الذكي.");
-        }
-    }, 1500);
-}
 </script>
 </body>
 </html>
