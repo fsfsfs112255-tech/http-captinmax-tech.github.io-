@@ -22,7 +22,6 @@
     --violet:#9B6BFF;
     --warn:#FFB020;
     --danger:#FF5470;
-    --gold:#FFD700;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;-webkit-tap-highlight-color: transparent;}
@@ -94,17 +93,6 @@
     border-color:var(--blue);
     color:#7FB0FF;
     box-shadow: 0 0 20px rgba(62,139,255,0.3);
-  }
-
-  /* Neon Tab Special Style */
-  .page-tab.luck-tab-neon {
-    border-color: rgba(255, 215, 0, 0.4);
-    color: var(--gold);
-    animation: neonPulseTab 2s infinite alternate;
-  }
-  @keyframes neonPulseTab {
-    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
-    100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); }
   }
 
   .page-section{display:none; animation: sectionFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-width:520px; margin:0 auto;}
@@ -413,100 +401,6 @@
     font-weight: 700;
   }
 
-  /* LUCK SECTION NEON STYLES */
-  .luck-card-neon {
-    background: rgba(22, 28, 37, 0.85);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(16px);
-  }
-  .luck-gauge-neon {
-    position: relative;
-    width: 180px;
-    height: 180px;
-    margin: 15px auto;
-  }
-  .luck-circle-bg {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.05);
-    stroke-width: 14;
-  }
-  .luck-circle-fill {
-    fill: none;
-    stroke: url(#luckGradient);
-    stroke-width: 14;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), stroke 0.5s ease;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
-  }
-  .luck-score-val {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .luck-num {
-    font-family: 'Tajawal';
-    font-weight: 900;
-    font-size: 42px;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 105, 180, 0.6);
-  }
-  .luck-status-title {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--text-dim);
-    margin-top: -4px;
-  }
-  .btn-luck-boost {
-    background: linear-gradient(135deg, #FFD700, #FF007F);
-    color: #fff;
-    font-family: 'Tajawal';
-    font-weight: 900;
-    font-size: 15px;
-    padding: 14px 20px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    width: 100%;
-    margin-top: 10px;
-  }
-  .btn-luck-boost:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 35px rgba(255, 215, 0, 0.8);
-  }
-  .btn-telegram-sub {
-    background: linear-gradient(135deg, #2AA9EA, #0077FF);
-    color: #fff;
-    font-family: 'Tajawal';
-    font-weight: 800;
-    font-size: 13.5px;
-    padding: 12px 18px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 0 20px rgba(42, 169, 234, 0.4);
-    margin-bottom: 12px;
-    transition: all 0.3s;
-  }
-  .btn-telegram-sub:hover {
-    box-shadow: 0 0 30px rgba(42, 169, 234, 0.7);
-  }
-
   /* GIVEAWAY TIMER Mobile Scaled */
   .timer-display{
     font-family:'Tajawal', sans-serif;font-weight:900;font-size:40px;text-align:center;
@@ -519,6 +413,12 @@
   @keyframes pulseTimer{ 0% {transform:scale(1);} 100% {transform:scale(1.01);} }
   .giveaway-rules{font-size:11.5px;color:var(--text-dim);line-height:1.5;margin-bottom:12px;background:rgba(255,176,32,0.08);border:1px solid rgba(255,176,32,0.25);padding:10px;border-radius:12px;}
   .cooldown-box{background:rgba(255,84,112,0.08);border:1px solid rgba(255,84,112,0.3);color:#FF8FA3;padding:10px;border-radius:12px;font-size:11.5px;text-align:center;font-weight:700;margin-bottom:12px;display:none;}
+
+  /* --- LUCK BOOSTER SECTION STYLES --- */
+  .luck-gauge-wrap{position:relative;width:150px;height:150px;margin:12px auto;filter:drop-shadow(0 0 18px rgba(182,255,62,0.3));}
+  .luck-gauge-wrap svg{width:100%;height:100%;transform:rotate(-90deg);}
+  .luck-gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .luck-score{font-family:'Tajawal';font-weight:900;font-size:32px;line-height:1;color:var(--lime);text-shadow:0 0 12px rgba(182,255,62,0.5);}
 
   .toast{
     position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(14px);
@@ -560,11 +460,11 @@
   </div>
 </div>
 
-<!-- NAVIGATION BAR -->
+<!-- NAVIGATION BAR (مع إضافة تبويب قسم الحظ الجديد) -->
 <div class="nav-pages" id="navPages">
   <div class="page-tab active" data-target="page-scan">⚡ الرئيسية والفحص</div>
-  <div class="page-tab luck-tab-neon" data-target="page-luck">🎰 زيادة الحظ</div>
   <div class="page-tab" data-target="page-ai">🤖 المدرب الذكي والتشكيلة</div>
+  <div class="page-tab" data-target="page-luck">🍀 قسم الحظ</div>
   <div class="page-tab" data-target="page-giveaway">🎁 مختبر الجوائز</div>
   <div class="page-tab" data-target="page-system">⚙ الأداء والنظام</div>
   <div class="page-tab" data-target="page-net">📶 الشبكة والتخزين</div>
@@ -601,52 +501,6 @@
     </section>
   </div>
 
-  <!-- ================= PAGE: LUCK BOOST (قسم الحظ الجديد) ================= -->
-  <div id="page-luck" class="page-section">
-    <section>
-      <h2 class="section-title display">🎰 مركز زيادة الحظ والفتحات</h2>
-      <p class="section-desc">رفع نسبة الحظ لاقتناص لاعبين إبيك (Epic / Showtime) في لعبة eFootball Mobile.</p>
-
-      <div class="luck-card-neon">
-        <div style="font-family:'Tajawal'; font-weight:800; font-size:14px; color:var(--gold); margin-bottom:8px;">
-          ✨ مؤشر الحظ الحالي للحساب
-        </div>
-
-        <div class="luck-gauge-neon">
-          <svg viewBox="0 0 200 200" style="width:100%; height:100%; transform:rotate(-90deg);">
-            <defs>
-              <linearGradient id="luckGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FF007F" />
-                <stop offset="50%" stop-color="#FFD700" />
-                <stop offset="100%" stop-color="#B6FF3E" />
-              </linearGradient>
-            </defs>
-            <circle class="luck-circle-bg" cx="100" cy="100" r="80"></circle>
-            <circle id="luckCircleFill" class="luck-circle-fill" cx="100" cy="100" r="80" stroke-dasharray="502.6" stroke-dashoffset="402"></circle>
-          </svg>
-          <div class="luck-score-val">
-            <div id="luckNum" class="luck-num">20%</div>
-            <div id="luckStatusTitle" class="luck-status-title">حظ منخفض جداً ⚠️</div>
-          </div>
-        </div>
-
-        <!-- الخطوة الأولى: اشتراك تليجرام إجباري -->
-        <a id="tgSubBtn" class="btn-telegram-sub" href="https://t.me/r2max" target="_blank" onclick="markTelegramSubscribed()">
-          <span>✈️</span> اشترك في قناة التليجرام لفتح زيادة الحظ (إجباري)
-        </a>
-
-        <!-- الخطوة الثانية: زر زيادة الحظ (مغلق بالبداية) -->
-        <button id="luckBoostBtn" class="btn-luck-boost" onclick="triggerLuckBoost()" disabled style="opacity: 0.5; filter: grayscale(1);">
-          🔒 اضغط لزيادة الحظ (اشترك أولاً)
-        </button>
-
-        <div id="luckNote" style="font-size:11px; color:var(--text-dim); margin-top:12px; line-height:1.5;">
-          📌 <b>تنبيه:</b> يجب ضغط زر الاشتراك في القناة أعلاه ليفك القفل عن زر زيادة الحظ ويتم التنشيط بنجاح.
-        </div>
-      </div>
-    </section>
-  </div>
-
   <!-- ================= PAGE 2: AI COACH & ANIMATION SECTION ================= -->
   <div id="page-ai" class="page-section">
     <section>
@@ -654,7 +508,6 @@
       <div class="offline-badge">⚡ الدليل والأنيميشن الاحترافي لـ eFootball Mobile</div>
       <p class="section-desc">فحص التشكيلة، الشات الذكي، دليل الدفاع، وأساليب اللاعبين.</p>
 
-      <!-- SUB-TABS FOR AI COACH -->
       <div class="coach-subtabs">
         <button class="coach-subtab active" onclick="switchCoachTab('chat')">💬 الشات والفحص</button>
         <button class="coach-subtab" onclick="switchCoachTab('defense')">🛡️ دليل الدفاع</button>
@@ -676,7 +529,7 @@
 
         <div class="quick-topics" id="quickTopics">
           <div class="qt-chip" data-q="تحليل تشكيلتي بالتفصيل">فحص التشكيلة الشامل 📋</div>
-          <div class="qt-chip" data-q="ما هي أفضل أساليب الدفاع وااختيار المدافعين؟">طريقة الدفاع الصحيحة 🛡️</div>
+          <div class="qt-chip" data-q="ما هي أفضل أساليب الدفاع واختيار المدافعين؟">طريقة الدفاع الصحيحة 🛡️</div>
           <div class="qt-chip" data-q="كيف أدافع ضد الهجمات المرتدة السريعة؟">إيقاف المرتدات السريعة 🔥</div>
         </div>
 
@@ -733,7 +586,6 @@
           <div class="tactics-guide-desc">استكشف جميع أساليب اللعب الخاصة باللاعبين مصنفة ومنظمة بدقة لتوظيف كل لاعب في مكانه المثالي واستخراج أقصى طاقاته.</div>
         </div>
 
-        <!-- 1. FORWARDS -->
         <div class="role-category-box">
           <div class="role-cat-header">⚽ أولاً: أساليب المهاجمين (Forwards)</div>
           <div class="role-item">• <b>مهاجم صريح (Goal Poacher):</b> يتحرك بذكاء خارق على خط التسلل وينطلق كالسهم خلف المدافعين لاستلام البين پاسات القاتلة.</div>
@@ -746,7 +598,6 @@
           <div class="role-item">• <b>النشيط المتقدم (Hole Player):</b> الأفضل كـ AMF أو SS، ينطلق كقاطرة من الخلف لملء صندوق الخصم ومباغتة الحارس.</div>
         </div>
 
-        <!-- 2. MIDFIELDERS -->
         <div class="role-category-box">
           <div class="role-cat-header">⚙️ ثانياً: أساليب خط الوسط (Midfielders)</div>
           <div class="role-item">• <b>صانع اللعب الكلاسيكي (Classic No. 10):</b> يتميز ببطء تكتيكي ودقة تمرير ساحرة، يقتصد في مجهوده البدني بدون كرة لضرب الدفاع بتمريرة واحدة.</div>
@@ -756,7 +607,6 @@
           <div class="role-item">• <b>المحطم / قاطع الكرات (Destroyer Mid):</b> لاعب وسط شرس جداً في الضغط العنيف وافتكاك الكرات من منتصف ملعب الخصم.</div>
         </div>
 
-        <!-- 3. DEFENDERS & GOALKEEPERS -->
         <div class="role-category-box">
           <div class="role-cat-header">🛡️ ثالثاً: أساليب المدافعين والحراس (Defenders & GK)</div>
           <div class="role-item">• <b>بناء لعب (Build-up):</b> قلب دفاع متزن وهادئ، يغطي المساحات بدقة ولا يندفع أبداً خلف المهاجمين.</div>
@@ -833,6 +683,37 @@
         </div>
       </div>
 
+    </section>
+  </div>
+
+  <!-- ================= NEW PAGE: LUCK BOOSTER SECTION ================= -->
+  <div id="page-luck" class="page-section">
+    <section>
+      <h2 class="section-title display">🍀 قسم زيادة الحظ في الحزم (Pack Luck)</h2>
+      <p class="section-desc">ارفع نسبة حظك لفتح الحزم الأسطورية، وجلب أفضل اللاعبين Epic و Showtime!</p>
+
+      <div class="panel" style="text-align:center;">
+        <div class="giveaway-rules" style="text-align:right; margin-bottom:14px;">
+          📌 <b>تعليمات زيادة الحظ:</b>
+          <br>1. اضغط على زر الحساب أدناه لتفعيل موجة الحظ السحرية.
+          <br>2. ستتغير نسبة الحظ عشوائياً وبشكل مضمون بين **75% و 90%**.
+          <br>3. انضم لقناتنا على تيليجرام <a href="https://t.me/r2max" target="_blank" style="color:var(--lime); font-weight:700;">@r2max</a> للمزيد من الأسرار والثغرات!
+        </div>
+
+        <div class="luck-gauge-wrap">
+          <svg viewBox="0 0 220 220">
+            <circle class="gauge-track" cx="110" cy="110" r="94"></circle>
+            <circle id="luckGaugeFill" class="gauge-fill" cx="110" cy="110" r="94" stroke-dasharray="590.6" stroke-dashoffset="590.6"></circle>
+          </svg>
+          <div class="luck-gauge-center">
+            <div id="luckScore" class="luck-score">--%</div>
+            <div class="gauge-pct">LUCK RATE</div>
+          </div>
+        </div>
+
+        <button id="luckBtn" class="btn btn-primary" onclick="calculatePackLuck()" style="margin-top:10px;">احسب نسبة حظك الآن ⚡</button>
+        <div id="luckResult" style="margin-top:14px; font-weight:700; font-size:13.5px; display:none; color:var(--lime);"></div>
+      </div>
     </section>
   </div>
 
@@ -954,66 +835,6 @@ document.getElementById('navPages').addEventListener('click', (e) => {
   window.scrollTo({top:0, behavior:'smooth'});
 });
 
-// LUCK BOOST SYSTEM SCRIPT
-let isSubscribedToTg = false;
-
-function markTelegramSubscribed() {
-  isSubscribedToTg = true;
-  const boostBtn = document.getElementById('luckBoostBtn');
-  const tgBtn = document.getElementById('tgSubBtn');
-  const note = document.getElementById('luckNote');
-
-  boostBtn.disabled = false;
-  boostBtn.style.opacity = '1';
-  boostBtn.style.filter = 'none';
-  boostBtn.textContent = '🚀 اضغط الآن لرفع نسبة الحظ إلى 80%';
-  
-  tgBtn.style.background = 'rgba(182,255,62,0.2)';
-  tgBtn.style.borderColor = 'var(--lime)';
-  tgBtn.innerHTML = '✅ تم التحقق من الاشتراك بالقناة!';
-
-  note.innerHTML = '✨ <b>ممتاز!</b> تم فتح القفل، اضغط الآن على زر زياده الحظ بالأسفل لتفعيل النسبة العالية.';
-  showToast('تم التثبت من فتح زر زيادة الحظ بنجاح!');
-}
-
-function triggerLuckBoost() {
-  if (!isSubscribedToTg) {
-    showToast('يجب عليك الاشتراك في قناة التليجرام أولاً لفتح الحظ!');
-    return;
-  }
-
-  const numEl = document.getElementById('luckNum');
-  const titleEl = document.getElementById('luckStatusTitle');
-  const fillCircle = document.getElementById('luckCircleFill');
-  const boostBtn = document.getElementById('luckBoostBtn');
-
-  boostBtn.disabled = true;
-  boostBtn.textContent = '⚡ جارِ رفع الحظ وتنشيط السيرفر...';
-
-  // Target values: 80%
-  const targetLuck = 80;
-  let currentLuck = 20;
-
-  const interval = setInterval(() => {
-    currentLuck += 2;
-    if (currentLuck >= targetLuck) {
-      currentLuck = targetLuck;
-      clearInterval(interval);
-      
-      // Update UI for success
-      titleEl.textContent = 'حظ أسطوري مرتفع للغاية 🔥 (80%)';
-      titleEl.style.color = 'var(--lime)';
-      boostBtn.textContent = '🎉 تم رفع الحظ بنجاح إلى 80%';
-      showToast('🎉 مبروك! تم زيادة نسبة الحظ في حسابك إلى 80% بنجاح!');
-    }
-
-    numEl.textContent = currentLuck + '%';
-    // Total circumference is 502.6 -> offset = 502.6 - (502.6 * currentLuck / 100)
-    const offset = 502.6 - (502.6 * currentLuck / 100);
-    fillCircle.style.strokeDashoffset = offset;
-  }, 30);
-}
-
 // SUB-TABS SWITCHER FOR AI COACH
 function switchCoachTab(tabKey){
   const subtabs = document.querySelectorAll('.coach-subtab');
@@ -1064,6 +885,42 @@ function switchAnimView(viewKey){
     document.getElementById('anim-box-role').classList.add('active');
     caption.textContent = '👤 التمركز الدقيق للمهارة والأسلوب الاحترافي واستغلال المساحات بالميدان.';
   }
+}
+
+// --- LUCK BOOSTER LOGIC (بين 75% و 90%) ---
+function calculatePackLuck(){
+  const btn = document.getElementById('luckBtn');
+  const scoreEl = document.getElementById('luckScore');
+  const fillEl = document.getElementById('luckGaugeFill');
+  const resultEl = document.getElementById('luckResult');
+
+  btn.disabled = true;
+  btn.textContent = 'جاري قياس موجة الحظ... ⏳';
+  resultEl.style.display = 'none';
+
+  let counter = 0;
+  const interval = setInterval(() => {
+    const tempVal = Math.floor(Math.random() * (90 - 75 + 1)) + 75;
+    scoreEl.textContent = tempVal + '%';
+    counter++;
+    if(counter > 10){
+      clearInterval(interval);
+      // النتيجة النهائية العشوائية بين 75 و 90
+      const finalLuck = Math.floor(Math.random() * (90 - 75 + 1)) + 75;
+      scoreEl.textContent = finalLuck + '%';
+      
+      const circumference = 590.6;
+      const offset = circumference - (circumference * finalLuck / 100);
+      fillEl.style.strokeDashoffset = offset;
+
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `✨ نسبة حظك الحالية أسطورية وتصل إلى <b>${finalLuck}%</b>! توكل على الله وافتح الحزم الآن! 🚀`;
+      
+      btn.disabled = false;
+      btn.textContent = 'أعد الحساب 🔄';
+      showToast(`تم تفعيل نسبة الحظ بنجاح: ${finalLuck}%!`);
+    }
+  }, 100);
 }
 
 function showToast(msg, ms=2200){
@@ -1351,7 +1208,7 @@ async function loadStorageAndMemoryPanel(){
     document.getElementById('ramIndicator').textContent = '⚪ غير متاح';
   }
   try{
-    if(navigator.storage && navigator.storage estimate){
+    if(navigator.storage && navigator.storage.estimate){
       const est = await navigator.storage.estimate();
       const usedMB = (est.usage/1024/1024).toFixed(1);
       const quotaMB = (est.quota/1024/1024).toFixed(0);
